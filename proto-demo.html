@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>약국 관리 - B2B ERP 프로토타입 (재현 · 비식별화)</title>
+<style>
+body{word-break:keep-all;overflow-wrap:break-word}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#F5F5F7; color:#111827; font-size:14px; }
+a { text-decoration:none; color:inherit; cursor:pointer; }
+
+:root {
+  --primary: #4B89DC;
+  --primary-light: #EBF4FF;
+  --primary-dark: #3A6FB5;
+  --dark: #1A1A2E;
+  --sidebar-w: 220px;
+  --topbar-h: 56px;
+  --tab-h: 40px;
+  --border: #E5E7EB;
+  --bg-page: #F5F5F7;
+  --bg-white: #FFFFFF;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --green: #22C55E;
+  --red: #EF4444;
+  --orange: #F97316;
+  --blue-tag: #3B82F6;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.app { display:flex; height:100vh; overflow:hidden; }
+
+/* Sidebar */
+.sidebar { width:var(--sidebar-w); background:var(--bg-white); border-right:1px solid var(--border); display:flex; flex-direction:column; flex-shrink:0; overflow-y:auto; }
+.sidebar-logo { padding:16px 20px; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border); }
+.logo-text { font-weight:700; font-size:15px; color:var(--primary); letter-spacing:-0.5px; }
+.logo-sub { font-size:10px; color:var(--text-muted); margin-left:4px; }
+
+.nav-group { padding:8px 0; }
+.nav-group-title { padding:8px 20px; font-size:12px; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+.nav-group-title:hover { color:var(--text-primary); }
+.nav-group-title .icon { font-size:16px; width:20px; text-align:center; }
+.nav-group-title .arrow { margin-left:auto; font-size:10px; transition:transform .2s; }
+.nav-group.open .arrow { transform:rotate(180deg); }
+.nav-items { display:none; }
+.nav-group.open .nav-items { display:block; }
+.nav-item { padding:7px 20px 7px 46px; font-size:13px; color:var(--text-secondary); cursor:pointer; border-left:3px solid transparent; transition:all .15s; }
+.nav-item:hover { color:var(--text-primary); background:#F9FAFB; }
+.nav-item.active { color:var(--primary); font-weight:600; border-left-color:var(--primary); background:var(--primary-light); }
+.nav-single { padding:8px 20px; font-size:12px; font-weight:600; color:var(--text-secondary); display:flex; align-items:center; gap:6px; cursor:pointer; }
+.nav-single:hover { color:var(--text-primary); }
+.nav-single .icon { font-size:16px; width:20px; text-align:center; }
+
+/* Main */
+.main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+.topbar { height:var(--topbar-h); background:var(--bg-white); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0; }
+.breadcrumb { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--text-secondary); }
+.breadcrumb .sep { color:var(--text-muted); }
+.breadcrumb .current { color:var(--text-primary); font-weight:600; }
+.user-info { display:flex; align-items:center; gap:8px; font-size:12px; }
+.user-info .name { font-weight:600; color:var(--text-primary); }
+.user-info .role { color:var(--text-secondary); }
+
+.tabbar { height:var(--tab-h); background:var(--bg-white); border-bottom:1px solid var(--border); display:flex; align-items:flex-end; padding:0 24px; flex-shrink:0; }
+.tab { padding:8px 16px; font-size:13px; color:var(--text-secondary); cursor:pointer; border-bottom:2px solid transparent; display:flex; align-items:center; gap:6px; }
+.tab.active { color:var(--primary); font-weight:600; border-bottom-color:var(--primary); }
+
+.content { flex:1; display:flex; overflow:hidden; }
+
+/* List/Detail split */
+.list-area { width:55%; min-width:480px; border-right:1px solid var(--border); display:flex; flex-direction:column; overflow:hidden; background:var(--bg-white); }
+.detail-area { flex:1; overflow-y:auto; background:var(--bg-page); padding:24px; }
+
+/* Search */
+.search-section { padding:16px 20px; border-bottom:1px solid var(--border); }
+.search-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.search-title { font-size:13px; font-weight:600; }
+.search-toggle { font-size:12px; color:var(--primary); cursor:pointer; margin-left:auto; display:flex; align-items:center; gap:4px; }
+.search-input-wrap { position:relative; }
+.search-input-wrap input { width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:13px; outline:none; }
+.search-input-wrap input:focus { border-color:var(--primary); }
+.search-input-wrap .search-icon { position:absolute; right:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:14px; }
+
+.expanded-filters { display:none; margin-top:12px; gap:12px; }
+.expanded-filters.show { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.filter-group { display:flex; flex-direction:column; gap:4px; }
+.filter-group label { font-size:11px; color:var(--text-secondary); font-weight:500; }
+.filter-group select, .filter-group input { padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; outline:none; }
+
+/* Result bar */
+.result-bar { padding:10px 20px; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.result-count { font-size:13px; color:var(--primary); font-weight:600; }
+.result-count span { color:var(--text-secondary); font-weight:400; }
+.result-actions { margin-left:auto; display:flex; gap:6px; flex-wrap:wrap; }
+
+/* Buttons */
+.btn { padding:6px 14px; font-size:12px; border-radius:var(--radius-sm); cursor:pointer; border:1px solid var(--border); background:var(--bg-white); color:var(--text-primary); display:inline-flex; align-items:center; gap:4px; transition:all .15s; font-weight:500; white-space:nowrap; }
+.btn:hover { background:#F3F4F6; }
+.btn-primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+.btn-primary:hover { background:var(--primary-dark); }
+.btn-dark { background:var(--dark); color:#fff; border-color:var(--dark); }
+.btn-dark:hover { background:#2A2A3E; }
+.btn-danger { color:var(--red); border-color:var(--red); }
+.btn-danger:hover { background:#FEF2F2; }
+.btn-sm { padding:4px 10px; font-size:11px; }
+.btn-xs { padding:3px 8px; font-size:10px; }
+
+/* Table */
+.table-wrap { flex:1; overflow:auto; }
+table { width:100%; border-collapse:collapse; }
+thead th { padding:8px 10px; font-size:11px; font-weight:600; color:var(--text-secondary); text-align:left; border-bottom:1px solid var(--border); background:#FAFAFA; position:sticky; top:0; z-index:1; white-space:nowrap; }
+tbody td { padding:8px 10px; font-size:12px; border-bottom:1px solid #F3F4F6; white-space:nowrap; }
+tbody tr { cursor:pointer; transition:background .1s; }
+tbody tr:hover { background:#F9FAFB; }
+tbody tr.selected { background:var(--primary-light); }
+
+/* Tags */
+.tag { display:inline-flex; align-items:center; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+.tag-green { background:#DCFCE7; color:#16A34A; }
+.tag-gray { background:#F3F4F6; color:#6B7280; }
+.tag-orange { background:#FFF7ED; color:#EA580C; }
+.tag-red { background:#FEF2F2; color:#DC2626; }
+.tag-blue { background:#EFF6FF; color:#2563EB; }
+.tag-yellow { background:#FEF9C3; color:#A16207; }
+
+.badge { display:inline-flex; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600; }
+.badge-green { background:#DCFCE7; color:#16A34A; }
+.badge-red { background:#FEF2F2; color:#DC2626; }
+.badge-orange { background:#FFF7ED; color:#EA580C; }
+.badge-gray { background:#F3F4F6; color:#6B7280; }
+.badge-blue { background:#EFF6FF; color:#2563EB; }
+.badge-yellow { background:#FEF9C3; color:#A16207; }
+
+/* Detail panel */
+.detail-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:var(--text-muted); }
+.detail-empty p { font-size:14px; }
+.detail-empty .sub { font-size:12px; margin-top:4px; }
+
+.detail-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; }
+.detail-profile { display:flex; align-items:center; gap:12px; }
+.detail-name { font-size:20px; font-weight:700; }
+.detail-meta { display:flex; align-items:center; gap:8px; margin-top:4px; flex-wrap:wrap; }
+.detail-actions { display:flex; gap:8px; }
+
+.detail-section { background:var(--bg-white); border-radius:var(--radius); padding:20px; margin-bottom:16px; box-shadow:var(--shadow); }
+.section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; cursor:pointer; }
+.section-title { font-size:14px; font-weight:600; }
+.source-tag { font-size:10px; font-weight:500; padding:2px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; }
+.source-tag.client-req { background:#DBEAFE; color:#1E40AF; }
+.source-tag.biz-based { background:#CCFBF1; color:#115E59; }
+.source-tag.meeting { background:#E0E7FF; color:#3730A3; }
+.source-tag.legacy { background:#FEF3C7; color:#92400E; }
+.source-tag.custom { background:#FCE4EC; color:#AD1457; }
+.source-tag.design { background:#D1FAE5; color:#065F46; }
+.source-tag.needs-confirm { background:#FEE2E2; color:#991B1B; }
+.source-tag.needs-check { background:#F3F4F6; color:#6B7280; }
+.section-toggle { font-size:12px; color:var(--text-muted); }
+.detail-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.detail-field { display:flex; flex-direction:column; gap:4px; }
+.field-label { font-size:11px; color:var(--text-secondary); font-weight:500; }
+.field-value { font-size:14px; color:var(--text-primary); font-weight:500; }
+
+/* Full page overlay */
+.page-overlay { position:fixed; inset:0; z-index:100; display:none; }
+.page-overlay.show { display:flex; }
+.page-full { width:100%; height:100%; display:flex; background:var(--bg-page); }
+.page-full .sidebar { flex-shrink:0; }
+
+.form-container { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+.form-topbar { height:var(--topbar-h); background:var(--bg-white); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0; }
+.form-content { flex:1; overflow-y:auto; padding:24px 40px; }
+.form-title { font-size:18px; font-weight:700; margin-bottom:24px; }
+
+.form-section { background:var(--bg-white); border-radius:var(--radius); padding:24px; margin-bottom:20px; box-shadow:var(--shadow); }
+.form-section-title { font-size:14px; font-weight:600; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-group.full { grid-column:1/-1; }
+.form-label { font-size:12px; color:var(--text-secondary); font-weight:500; display:flex; align-items:center; gap:4px; }
+.form-label .required { color:var(--red); font-weight:700; }
+.form-input { padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:13px; outline:none; transition:border .15s; width:100%; }
+.form-input:focus { border-color:var(--primary); }
+.form-select { padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:13px; outline:none; background:var(--bg-white); width:100%; }
+.form-input-with-btn { display:flex; gap:8px; }
+.form-input-with-btn input { flex:1; }
+.form-readonly { padding:8px 12px; background:#F9FAFB; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:13px; color:var(--text-secondary); }
+
+.form-footer { padding:20px 40px; background:var(--bg-white); border-top:1px solid var(--border); display:flex; justify-content:flex-end; gap:12px; flex-shrink:0; }
+
+/* Inline table */
+.inline-table { width:100%; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+.inline-table table { margin:0; }
+.inline-table thead th { padding:6px 10px; font-size:11px; }
+.inline-table tbody td { padding:6px 10px; font-size:12px; }
+
+/* Mini table */
+.mini-table { width:100%; font-size:12px; }
+.mini-table th { text-align:left; padding:6px 8px; background:#FAFAFA; font-weight:600; color:var(--text-secondary); border-bottom:1px solid var(--border); }
+.mini-table td { padding:6px 8px; border-bottom:1px solid #F3F4F6; }
+
+/* Detail page full */
+.detail-page-content { flex:1; overflow-y:auto; padding:24px 40px; }
+.detail-page-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+.detail-page-title { display:flex; align-items:center; gap:12px; }
+.detail-page-title h1 { font-size:20px; font-weight:700; }
+.detail-page-meta { display:flex; gap:8px; align-items:center; }
+
+/* Screen switcher */
+.screen-switch { position:fixed; bottom:20px; right:20px; z-index:300; display:flex; gap:8px; background:var(--dark); padding:8px 12px; border-radius:var(--radius); box-shadow:0 4px 20px rgba(0,0,0,.3); }
+.screen-btn { padding:6px 14px; font-size:12px; color:#fff; opacity:.6; cursor:pointer; border-radius:var(--radius-sm); transition:all .15s; border:none; background:none; font-weight:500; }
+.screen-btn:hover { opacity:.8; }
+.screen-btn.active { opacity:1; background:rgba(255,255,255,.15); }
+
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:#D1D5DB; border-radius:3px; }
+.hidden { display:none !important; }
+
+.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:200; display:none; align-items:center; justify-content:center; }
+.modal-backdrop.show { display:flex; }
+.modal { background:#fff; border-radius:8px; max-height:80vh; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,.15); }
+.modal-header { padding:20px 24px; border-bottom:1px solid #E5E7EB; display:flex; align-items:center; justify-content:space-between; }
+.modal-title { font-size:16px; font-weight:700; }
+.modal-close { font-size:20px; cursor:pointer; color:#9CA3AF; background:none; border:none; padding:4px; }
+.modal-body { padding:24px; overflow-y:auto; }
+
+#chainDisplay .chain-node { background:#EBF4FF; border:2px solid #4B89DC; border-radius:8px; padding:8px 16px; text-align:center; }
+#chainDisplay .chain-node.current { background:#4B89DC; color:#fff; }
+#chainDisplay .chain-node .code { font-weight:700; font-size:14px; }
+#chainDisplay .chain-node .name { font-size:11px; margin-top:2px; }
+#chainDisplay .chain-arrow { font-size:20px; color:#4B89DC; font-weight:700; }
+</style>
+</head>
+<body><div style="position:sticky;top:0;z-index:999;background:#26262B;color:#F5F4F1;padding:10px 16px;font:500 13px/1.5 'Pretendard',sans-serif;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>실제 제작 프로토타입 사본 — 고객사 정보 비식별화 · 데이터는 전부 더미입니다</span><a href="index.html#pf-erp" style="color:#E4B583;text-decoration:underline;text-underline-offset:3px">← 케이스로 돌아가기</a></div>
+
+<!-- Screen Switcher -->
+<div class="screen-switch">
+  <button class="screen-btn active" onclick="showScreen('list')">조회</button>
+  <button class="screen-btn" onclick="showScreen('register')">등록</button>
+  <button class="screen-btn" onclick="showScreen('detail')">상세</button>
+  <button class="screen-btn" onclick="showScreen('edit')">수정</button>
+</div>
+
+<!-- ===== 조회 화면 ===== -->
+<div class="app" id="screen-list">
+  <aside class="sidebar" id="sidebar-main">
+    <div class="sidebar-logo">
+      <div><span class="logo-text">고객사 ERP</span><br><span class="logo-sub">재현 · 비식별화</span></div>
+    </div>
+    <nav style="flex:1; overflow-y:auto; padding:8px 0;">
+      <div class="nav-single"><span class="icon">📊</span> 대시보드</div>
+      <div class="nav-group"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">⚙️</span> 시스템 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">임직원 관리</div><div class="nav-item">부서 관리</div><div class="nav-item">약국 그룹 관리</div></div></div>
+      <div class="nav-group open"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">🏢</span> 거래처 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">CSO 관리</div><div class="nav-item">병의원 관리</div><div class="nav-item active">약국 관리</div><div class="nav-item">도매업체 관리</div><div class="nav-item">제약사 관리</div></div></div>
+      <div class="nav-single"><span class="icon">💊</span> 품목 관리</div>
+      <div class="nav-group"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">📋</span> 정산 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">흡수율 관리</div><div class="nav-item">지급 관리</div><div class="nav-item">인센티브 관리</div><div class="nav-item">세금계산서 관리</div><div class="nav-item">청구·수금 관리</div></div></div>
+      <div class="nav-group"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">📈</span> 실적 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">EDI 입력</div><div class="nav-item">EDI 시약조 조회</div><div class="nav-item">도매 매출 관리</div></div></div>
+      <div class="nav-group"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">📝</span> 계약 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">계약 관리</div><div class="nav-item">CP 관리</div></div></div>
+      <div class="nav-group"><div class="nav-group-title" onclick="this.parentElement.classList.toggle('open')"><span class="icon">📊</span> 보고서 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item">영업 성과</div><div class="nav-item">시장 경향</div></div></div>
+      <div class="nav-single"><span class="icon">🌐</span> 협력사 포털</div>
+      <div class="nav-single"><span class="icon">⚙️</span> 시스템 설정</div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb"><span>🏠</span><span class="sep">&gt;</span><span>거래처 관리</span><span class="sep">&gt;</span><span class="current">약국 관리</span></div>
+      <div class="user-info"><div><span class="name">박지현</span> <span class="role">차장</span></div></div>
+    </div>
+    <div class="tabbar">
+      <div class="tab active">약국 관리</div>
+    </div>
+
+    <div class="content">
+      <!-- List Area -->
+      <div class="list-area">
+        <!-- Search -->
+        <div class="search-section">
+          <div class="search-header">
+            <span class="search-title">검색 필터</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-sm" onclick="resetSearch()">초기화</button>
+              <button class="btn btn-dark btn-sm">검색</button>
+            </div>
+          </div>
+          <div style="margin-bottom:8px;">
+            <label style="font-size:12px;color:var(--text-secondary);font-weight:500;">통합 검색</label>
+            <span class="search-toggle" onclick="toggleFilters()">펼쳐보기 / 상세 필터 ▼</span>
+          </div>
+          <div class="search-input-wrap">
+            <input type="text" placeholder="코드/약국명/정식명칭/사업자번호 검색" id="searchInput">
+            <span class="search-icon">🔍</span>
+          </div>
+          <div class="expanded-filters" id="expandedFilters">
+            <div class="filter-group"><label>약국코드</label><input type="text" placeholder="완전 일치 검색"></div>
+            <div class="filter-group"><label>사업자번호</label><input type="text" placeholder="완전 일치 검색"></div>
+            <div class="filter-group"><label>지역</label><select><option value="">전체</option><option>서울</option><option>경기</option><option>인천</option><option>부산</option><option>대구</option><option>광주</option><option>대전</option><option>울산</option><option>세종</option><option>강원</option><option>충북</option><option>충남</option><option>전북</option><option>전남</option><option>경북</option><option>경남</option><option>제주</option></select></div>
+            <div class="filter-group"><label>상태</label><select><option value="">전체</option><option>활성</option><option>비활성</option><option>폐업</option><option>임시</option></select></div>
+          </div>
+        </div>
+
+        <!-- Result bar -->
+        <div class="result-bar">
+          <span class="result-count">10건 <span>조회됨</span></span>
+          <div class="result-actions">
+            <button class="btn btn-primary btn-sm" onclick="showScreen('register')">등록하기</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th><th>약국코드</th><th>약국명</th><th>사업자번호</th><th>지역</th><th>상태</th><th>등록일</th><th>등록구분</th>
+              </tr>
+            </thead>
+            <tbody id="pharmTable"></tbody>
+          </table>
+        </div>
+
+        <!-- Total count -->
+        <div style="padding:10px 20px; border-top:1px solid var(--border); font-size:12px; color:var(--text-secondary); flex-shrink:0;">
+          총 등록 수: <strong style="color:var(--primary);">10</strong>건
+        </div>
+      </div>
+
+      <!-- Detail Area (right panel) -->
+      <div class="detail-area">
+        <div id="detailEmpty">
+          <div class="detail-empty">
+            <p>약국을 선택하세요</p>
+            <p class="sub">좌측 리스트에서 약국을 클릭하면 상세 정보가 표시됩니다</p>
+          </div>
+        </div>
+        <div id="detailContent" class="hidden">
+          <div class="detail-header">
+            <div class="detail-profile">
+              <div>
+                <div class="detail-name" id="detailName">온누리약국</div>
+                <div class="detail-meta">
+                  <span style="font-size:12px;color:var(--text-secondary)" id="detailInPharm">일반약국</span>
+                  <span class="tag tag-green" id="detailStatus">활성</span>
+                  <span class="tag tag-blue" id="detailRegType">수동</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn-primary btn-sm" onclick="showScreen('detail')">전체 상세 보기</button>
+              <button class="btn btn-sm" onclick="showScreen('edit')">수정</button>
+            </div>
+          </div>
+
+          <!-- 기본 정보 (read-only) -->
+          <div class="detail-section">
+            <div class="section-header" onclick="toggleSection(this)"><span class="section-title">기본 정보 <span class="source-tag legacy">현행 시스템 기반</span></span><span class="section-toggle">▲</span></div>
+            <div class="detail-grid">
+              <div class="detail-field"><span class="field-label">약국명</span><span class="field-value" id="dName">-</span></div>
+              <div class="detail-field"><span class="field-label">대표자명</span><span class="field-value" id="dCeo">-</span></div>
+              <div class="detail-field"><span class="field-label">사업자번호</span><span class="field-value" id="dBizNum">-</span></div>
+              <div class="detail-field"><span class="field-label">약국코드</span><span class="field-value" id="dCode">-</span></div>
+              <div class="detail-field">
+                <span class="field-label">이전 코드</span>
+                <span class="field-value" id="dPrevCode" style="display:flex;align-items:center;gap:8px;">- <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;">이력보기</button></span>
+              </div>
+              <div class="detail-field"><span class="field-label">지역 구분</span><span class="field-value" id="dRegion">-</span></div>
+              <div class="detail-field" style="grid-column:1/-1"><span class="field-label">주소</span><span class="field-value" id="dAddr">-</span></div>
+              <div class="detail-field"><span class="field-label">연락처</span><span class="field-value" id="dPhone">-</span></div>
+              <div class="detail-field"><span class="field-label">사용여부</span><span class="field-value" id="dUseYn">-</span></div>
+              <div class="detail-field"><span class="field-label">개폐업상태</span><span class="field-value" id="dOpenClose">-</span></div>
+              <div class="detail-field"><span class="field-label">내부명칭</span><span class="field-value" id="dInternalName">-</span></div>
+              <div class="detail-field"><span class="field-label">정식명칭</span><span class="field-value" id="dOfficialName">-</span></div>
+              <div class="detail-field"><span class="field-label">XY좌표(위도, 경도)</span><span class="field-value" id="dXY">-</span></div>
+            </div>
+          </div>
+
+          <!-- 심평원 갱신 이력 -->
+          <div class="detail-section">
+            <div class="section-header" onclick="toggleSection(this)"><span class="section-title">심평원 갱신 이력 <span class="source-tag biz-based">현업 업무 기반 · 260313</span></span><span class="section-toggle">▲</span></div>
+            <div class="inline-table">
+              <table class="mini-table" id="dHiraTable">
+                <thead><tr><th>갱신일시</th><th>변경항목</th><th>변경전</th><th>변경후</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div style="display:flex;gap:8px;margin-top:16px;">
+            <button class="btn btn-primary btn-sm" onclick="showScreen('edit')">수정하기</button>
+            <button class="btn btn-danger btn-sm">삭제하기</button>
+            <button class="btn btn-sm" onclick="showScreen('list')">이전</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 등록 화면 ===== -->
+<div class="page-overlay" id="screen-register">
+  <div class="page-full">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><div><span class="logo-text">고객사 ERP</span><br><span class="logo-sub">재현 · 비식별화</span></div></div>
+      <nav style="flex:1;padding:8px 0;overflow-y:auto;">
+        <div class="nav-single"><span class="icon">📊</span> 대시보드</div>
+        <div class="nav-group open"><div class="nav-group-title"><span class="icon">🏢</span> 거래처 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item active">약국 관리</div></div></div>
+      </nav>
+    </aside>
+    <div class="form-container">
+      <div class="form-topbar">
+        <div class="breadcrumb"><span>🏠</span><span class="sep">&gt;</span><span>거래처 관리</span><span class="sep">&gt;</span><span>약국 관리</span><span class="sep">&gt;</span><span class="current">등록</span></div>
+        <div class="user-info"><span class="name">박지현</span> <span class="role">차장</span></div>
+      </div>
+      <div class="form-content">
+        <div class="form-title">약국 등록</div>
+
+        <!-- 기본 정보 -->
+        <div class="form-section">
+          <div class="form-section-title">기본 정보 <span class="source-tag legacy">현행 시스템 기반</span> <span class="source-tag meeting">회의내용 반영 · 260528</span></div>
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 약국명</label><input class="form-input" placeholder="약국명 입력"></div>
+            <div class="form-group"><label class="form-label">원내약국여부</label><select class="form-select"><option>일반약국</option><option>원내약국</option></select></div>
+            <div class="form-group"><label class="form-label">대표자명</label><div class="form-readonly">심평원 자동 연동</div></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 사업자번호</label><div class="form-input-with-btn"><input class="form-input" placeholder="000-00-00000"><button class="btn btn-sm btn-primary" onclick="this.nextElementSibling.style.display='flex'">사업자 3중 체크</button><span style="display:none;align-items:center;gap:4px;margin-left:4px;font-size:10px;"><span style="color:#16A34A;">✓존재</span> <span style="color:#16A34A;">✓영업중</span> <span style="color:#6B7280;">✗병원</span></span></div></div>
+            <div class="form-group"><label class="form-label">약국코드</label><div class="form-readonly">자동 부여</div></div>
+            <div class="form-group">
+              <label class="form-label">이전 코드</label>
+              <div class="form-readonly" style="display:flex;align-items:center;justify-content:space-between;">
+                <span>-</span>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:6px;">
+                <button class="btn btn-sm" onclick="alert('약국 검색 후 코드 연결')">연동</button>
+                <button class="btn btn-sm" onclick="openChainModal()">이력보기</button>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 지역 구분</label><select class="form-select"><option value="">선택</option><option>서울</option><option>경기</option><option>인천</option><option>부산</option><option>대구</option><option>광주</option><option>대전</option><option>울산</option><option>세종</option><option>강원</option><option>충북</option><option>충남</option><option>전북</option><option>전남</option><option>경북</option><option>경남</option><option>제주</option></select></div>
+            <div class="form-group"><label class="form-label">주소</label><input class="form-input" placeholder="주소 입력"></div>
+            <div class="form-group"><label class="form-label">연락처</label><input class="form-input" placeholder="02-0000-0000"></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 사용여부</label><select class="form-select"><option>사용</option><option>미사용</option></select></div>
+            <div class="form-group"><label class="form-label">개폐업상태</label><div class="form-readonly">심평원 자동</div></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 내부명칭</label><input class="form-input" placeholder="내부명칭 입력"></div>
+            <div class="form-group"><label class="form-label">정식명칭</label><input class="form-input" placeholder="정식명칭 입력"></div>
+            <div class="form-group"><label class="form-label">XY좌표(위도, 경도)</label><div style="display:flex;gap:8px;"><input class="form-input" type="number" placeholder="위도" style="flex:1;"><input class="form-input" type="number" placeholder="경도" style="flex:1;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn" onclick="showScreen('list')">취소</button>
+        <button class="btn btn-primary">등록하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 상세 화면 (Full page) ===== -->
+<div class="page-overlay" id="screen-detail">
+  <div class="page-full">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><div><span class="logo-text">고객사 ERP</span><br><span class="logo-sub">재현 · 비식별화</span></div></div>
+      <nav style="flex:1;padding:8px 0;overflow-y:auto;">
+        <div class="nav-single"><span class="icon">📊</span> 대시보드</div>
+        <div class="nav-group open"><div class="nav-group-title"><span class="icon">🏢</span> 거래처 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item active">약국 관리</div></div></div>
+      </nav>
+    </aside>
+    <div class="form-container">
+      <div class="form-topbar">
+        <div class="breadcrumb"><span>🏠</span><span class="sep">&gt;</span><span>거래처 관리</span><span class="sep">&gt;</span><span>약국 관리</span><span class="sep">&gt;</span><span class="current">상세</span></div>
+        <div class="user-info"><span class="name">박지현</span> <span class="role">차장</span></div>
+      </div>
+      <div class="detail-page-content">
+        <!-- Header -->
+        <div class="detail-page-header">
+          <div class="detail-page-title">
+            <h1 id="detailPageName">온누리약국</h1>
+            <span style="font-size:13px;color:var(--text-secondary)" id="detailPageInPharm">일반약국</span>
+            <span class="tag tag-green" id="detailPageStatus">활성</span>
+            <span class="tag tag-blue" id="detailPageRegType">수동</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn" onclick="showScreen('list')">이전</button>
+            <button class="btn btn-danger btn-sm">삭제하기</button>
+            <button class="btn btn-primary" onclick="showScreen('edit')">수정하기</button>
+          </div>
+        </div>
+
+        <!-- 기본 정보 (read-only, 3 columns) -->
+        <div class="detail-section">
+          <div class="section-header" onclick="toggleSection(this)"><span class="section-title">기본 정보 <span class="source-tag legacy">현행 시스템 기반</span></span><span class="section-toggle">▲</span></div>
+          <div class="detail-grid">
+            <div class="detail-field"><span class="field-label">약국명</span><span class="field-value" id="dp_name">-</span></div>
+            <div class="detail-field"><span class="field-label">대표자명</span><span class="field-value" id="dp_ceo">-</span></div>
+            <div class="detail-field"><span class="field-label">사업자번호</span><span class="field-value" id="dp_bizNum">-</span></div>
+            <div class="detail-field"><span class="field-label">약국코드</span><span class="field-value" id="dp_code">-</span></div>
+            <div class="detail-field">
+              <span class="field-label">이전 코드</span>
+              <span class="field-value" id="dp_prevCode" style="display:flex;align-items:center;gap:8px;">- <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;">이력보기</button></span>
+            </div>
+            <div class="detail-field"><span class="field-label">지역 구분</span><span class="field-value" id="dp_region">-</span></div>
+            <div class="detail-field" style="grid-column:1/-1"><span class="field-label">주소</span><span class="field-value" id="dp_addr">-</span></div>
+            <div class="detail-field"><span class="field-label">연락처</span><span class="field-value" id="dp_phone">-</span></div>
+            <div class="detail-field"><span class="field-label">사용여부</span><span class="field-value" id="dp_useYn">-</span></div>
+            <div class="detail-field"><span class="field-label">개폐업상태</span><span class="field-value" id="dp_openClose">-</span></div>
+            <div class="detail-field"><span class="field-label">내부명칭</span><span class="field-value" id="dp_internalName">-</span></div>
+            <div class="detail-field"><span class="field-label">정식명칭</span><span class="field-value" id="dp_officialName">-</span></div>
+            <div class="detail-field"><span class="field-label">XY좌표(위도, 경도)</span><span class="field-value" id="dp_xy">-</span></div>
+          </div>
+        </div>
+
+        <!-- 심평원 갱신 이력 -->
+        <div class="detail-section">
+          <div class="section-header" onclick="toggleSection(this)"><span class="section-title">심평원 갱신 이력 <span class="source-tag biz-based">현업 업무 기반 · 260313</span></span><span class="section-toggle">▲</span></div>
+          <div class="inline-table">
+            <table class="mini-table" id="dp_hiraTable">
+              <thead><tr><th>갱신일시</th><th>변경항목</th><th>변경전</th><th>변경후</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn" onclick="showScreen('list')">이전</button>
+        <button class="btn btn-danger">삭제하기</button>
+        <button class="btn btn-primary" onclick="showScreen('edit')">수정하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 수정 화면 ===== -->
+<div class="page-overlay" id="screen-edit">
+  <div class="page-full">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><div><span class="logo-text">고객사 ERP</span><br><span class="logo-sub">재현 · 비식별화</span></div></div>
+      <nav style="flex:1;padding:8px 0;overflow-y:auto;">
+        <div class="nav-single"><span class="icon">📊</span> 대시보드</div>
+        <div class="nav-group open"><div class="nav-group-title"><span class="icon">🏢</span> 거래처 관리 <span class="arrow">▲</span></div><div class="nav-items"><div class="nav-item active">약국 관리</div></div></div>
+      </nav>
+    </aside>
+    <div class="form-container">
+      <div class="form-topbar">
+        <div class="breadcrumb"><span>🏠</span><span class="sep">&gt;</span><span>거래처 관리</span><span class="sep">&gt;</span><span>약국 관리</span><span class="sep">&gt;</span><span class="current">수정</span></div>
+        <div class="user-info"><span class="name">박지현</span> <span class="role">차장</span></div>
+      </div>
+      <div class="form-content">
+        <div class="form-title" id="editTitle">약국 수정 — 온누리약국</div>
+
+        <!-- 기본 정보 -->
+        <div class="form-section">
+          <div class="form-section-title">기본 정보 <span class="source-tag legacy">현행 시스템 기반</span></div>
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 약국명</label><input class="form-input" id="edit_name" value="온누리약국"></div>
+            <div class="form-group"><label class="form-label">대표자명</label><div class="form-readonly" id="edit_ceo">김온누리</div></div>
+            <div class="form-group"><label class="form-label">원내약국여부</label><select class="form-select" id="edit_inPharm"><option>일반약국</option><option>원내약국</option></select></div>
+            <div class="form-group"><label class="form-label">사업자번호</label><div class="form-readonly" id="edit_bizNum">123-45-67890</div></div>
+            <div class="form-group"><label class="form-label">약국코드</label><div class="form-readonly" id="edit_code">PHM-001</div></div>
+            <div class="form-group">
+              <label class="form-label">이전 코드</label>
+              <div class="form-readonly" id="edit_prevCode" style="display:flex;align-items:center;justify-content:space-between;">
+                <span>-</span>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:6px;">
+                <button class="btn btn-sm btn-danger" onclick="alert('직전 연결만 해제 가능')">연결 해제</button>
+                <button class="btn btn-sm" onclick="openChainModal()">이력보기</button>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 지역 구분</label><select class="form-select" id="edit_region"><option>서울</option><option>경기</option><option>인천</option><option>부산</option><option>대구</option><option>광주</option><option>대전</option><option>울산</option><option>세종</option><option>강원</option><option>충북</option><option>충남</option><option>전북</option><option>전남</option><option>경북</option><option>경남</option><option>제주</option></select></div>
+            <div class="form-group"><label class="form-label">주소</label><input class="form-input" id="edit_addr" value="서울특별시 종로구 종로 123"></div>
+            <div class="form-group"><label class="form-label">연락처</label><input class="form-input" id="edit_phone" value="02-1234-5678"></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 사용여부</label><select class="form-select" id="edit_useYn"><option>사용</option><option>미사용</option></select></div>
+            <div class="form-group"><label class="form-label">개폐업상태</label><div class="form-readonly" id="edit_openClose">영업중</div></div>
+            <div class="form-group"><label class="form-label">상태</label><select class="form-select" id="edit_status"><option>활성</option><option>비활성</option><option>폐업</option><option>임시</option></select></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 내부명칭</label><input class="form-input" id="edit_internalName" value="온누리약국(내부)"></div>
+            <div class="form-group"><label class="form-label">정식명칭</label><input class="form-input" id="edit_officialName" value="온누리약국"></div>
+            <div class="form-group"><label class="form-label">XY좌표(위도, 경도)</label><div style="display:flex;gap:8px;"><input class="form-input" type="number" id="edit_lat" value="37.5700" style="flex:1;"><input class="form-input" type="number" id="edit_lng" value="126.9920" style="flex:1;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn" onclick="showScreen('list')">이전</button>
+        <button class="btn btn-danger">삭제하기</button>
+        <button class="btn btn-primary">저장하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== Sample Data =====
+const pharmList = [
+  { no:1, code:'PHM-001', name:'온누리약국', bizNum:'123-45-67890', ceo:'김온누리', region:'서울', status:'활성', regDate:'2025-03-15', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 종로구 종로 123', phone:'02-1234-5678', useYn:'사용', openClose:'영업중', internalName:'온누리약국(내부)', officialName:'온누리약국', lat:37.5700, lng:126.9920, hira:[{date:'2026-03-01 09:00',item:'약국명',before:'온누리약국(구)',after:'온누리약국'},{date:'2025-12-15 14:30',item:'개폐업상태',before:'휴업',after:'영업중'}] },
+  { no:2, code:'PHM-002', name:'메디팜약국', bizNum:'234-56-78901', ceo:'이메디', region:'서울', status:'활성', regDate:'2025-04-01', regType:'심평원', inPharm:'일반약국', prevCode:'OLD-P02', addr:'서울특별시 강남구 역삼로 456', phone:'02-2345-6789', useYn:'사용', openClose:'영업중', internalName:'메디팜약국(내부)', officialName:'메디팜약국', lat:37.5010, lng:127.0396, hira:[{date:'2026-01-10 10:15',item:'대표자명',before:'박메디',after:'이메디'}] },
+  { no:3, code:'PHM-003', name:'세브란스약국', bizNum:'345-67-89012', ceo:'박세브', region:'서울', status:'활성', regDate:'2025-05-20', regType:'자동', inPharm:'원내약국', prevCode:'-', addr:'서울특별시 서대문구 연세로 50', phone:'02-3456-7890', useYn:'사용', openClose:'영업중', internalName:'세브란스약국(내부)', officialName:'세브란스약국', lat:37.5622, lng:126.9410, hira:[{date:'2026-02-20 11:00',item:'주소',before:'서울특별시 서대문구 연세로 48',after:'서울특별시 서대문구 연세로 50'}] },
+  { no:4, code:'PHM-004', name:'삼성약국', bizNum:'456-78-90123', ceo:'정삼성', region:'경기', status:'활성', regDate:'2025-06-10', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'경기도 수원시 영통구 광교로 789', phone:'031-4567-8901', useYn:'사용', openClose:'영업중', internalName:'삼성약국(내부)', officialName:'삼성약국', lat:37.2911, lng:127.0469, hira:[] },
+  { no:5, code:'PHM-005', name:'한미약국', bizNum:'567-89-01234', ceo:'최한미', region:'부산', status:'비활성', regDate:'2025-07-01', regType:'심평원', inPharm:'일반약국', prevCode:'OLD-P05', addr:'부산광역시 해운대구 해운대로 321', phone:'051-5678-9012', useYn:'미사용', openClose:'영업중', internalName:'한미약국(내부)', officialName:'한미약국', lat:35.1631, lng:129.1636, hira:[{date:'2025-11-01 09:30',item:'연락처',before:'051-5555-1234',after:'051-5678-9012'}] },
+  { no:6, code:'PHM-006', name:'강남약국', bizNum:'678-90-12345', ceo:'강남이', region:'서울', status:'활성', regDate:'2025-08-15', regType:'자동', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 강남구 강남대로 654', phone:'02-6789-0123', useYn:'사용', openClose:'영업중', internalName:'강남약국(내부)', officialName:'강남약국', lat:37.4979, lng:127.0276, hira:[] },
+  { no:7, code:'PHM-007', name:'분당약국', bizNum:'789-01-23456', ceo:'김분당', region:'경기', status:'폐업', regDate:'2024-12-01', regType:'수동', inPharm:'일반약국', prevCode:'OLD-P07', addr:'경기도 성남시 분당구 판교로 987', phone:'031-7890-1234', useYn:'미사용', openClose:'폐업', internalName:'분당약국(내부)', officialName:'분당약국', lat:37.3947, lng:127.1113, hira:[{date:'2026-04-01 08:00',item:'개폐업상태',before:'영업중',after:'폐업'}] },
+  { no:8, code:'PHM-008', name:'서울약국', bizNum:'890-12-34567', ceo:'박서울', region:'서울', status:'활성', regDate:'2025-09-01', regType:'심평원', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 중구 을지로 111', phone:'02-8901-2345', useYn:'사용', openClose:'영업중', internalName:'서울약국(내부)', officialName:'서울약국', lat:37.5660, lng:126.9784, hira:[] },
+  { no:9, code:'PHM-009', name:'건강약국', bizNum:'901-23-45678', ceo:'이건강', region:'인천', status:'활성', regDate:'2025-10-15', regType:'자동', inPharm:'일반약국', prevCode:'-', addr:'인천광역시 남동구 인하로 222', phone:'032-9012-3456', useYn:'사용', openClose:'영업중', internalName:'건강약국(내부)', officialName:'건강약국', lat:37.4506, lng:126.6572, hira:[{date:'2026-05-10 16:00',item:'약국명',before:'건강한약국',after:'건강약국'}] },
+  { no:10, code:'PHM-010', name:'행복약국', bizNum:'012-34-56789', ceo:'최행복', region:'대전', status:'비활성', regDate:'2025-11-01', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'대전광역시 유성구 대학로 333', phone:'042-0123-4567', useYn:'미사용', openClose:'영업중', internalName:'행복약국(내부)', officialName:'행복약국', lat:36.3622, lng:127.3561, hira:[] },
+];
+
+let selectedIdx = null;
+
+function getStatusTag(status) {
+  const map = { '활성':'tag-green', '비활성':'tag-gray', '폐업':'tag-red', '임시':'tag-orange' };
+  return `<span class="tag ${map[status]||'tag-gray'}">${status}</span>`;
+}
+function getRegTypeTag(regType) {
+  const map = { '수동':'tag-blue', '자동':'tag-yellow', '심평원':'tag-green' };
+  return `<span class="tag ${map[regType]||'tag-gray'}">${regType}</span>`;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('pharmTable');
+  tbody.innerHTML = pharmList.map((p, i) => `<tr class="${i===selectedIdx?'selected':''}" onclick="selectPharm(${i})">
+    <td>${p.no}</td><td>${p.code}</td><td style="font-weight:500">${p.name}</td><td>${p.bizNum}</td><td>${p.region}</td><td>${getStatusTag(p.status)}</td><td>${p.regDate}</td><td>${getRegTypeTag(p.regType)}</td>
+  </tr>`).join('');
+}
+
+function selectPharm(idx) {
+  selectedIdx = idx;
+  renderTable();
+  showPanelDetail(pharmList[idx]);
+}
+
+function showPanelDetail(p) {
+  document.getElementById('detailEmpty').classList.add('hidden');
+  document.getElementById('detailContent').classList.remove('hidden');
+
+  // Panel header
+  document.getElementById('detailName').textContent = p.name;
+  document.getElementById('detailInPharm').textContent = p.inPharm;
+  const statusEl = document.getElementById('detailStatus');
+  statusEl.className = 'tag ' + ({'활성':'tag-green','비활성':'tag-gray','폐업':'tag-red','임시':'tag-orange'}[p.status]||'tag-gray');
+  statusEl.textContent = p.status;
+  const regTypeEl = document.getElementById('detailRegType');
+  regTypeEl.className = 'tag ' + ({'수동':'tag-blue','자동':'tag-yellow','심평원':'tag-green'}[p.regType]||'tag-gray');
+  regTypeEl.textContent = p.regType;
+
+  // Panel basic info
+  document.getElementById('dName').textContent = p.name;
+  document.getElementById('dCeo').textContent = p.ceo;
+  document.getElementById('dBizNum').textContent = p.bizNum;
+  document.getElementById('dCode').textContent = p.code;
+  const prevHtml = p.prevCode !== '-' ?
+    `${p.prevCode} <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;margin-left:6px;">이력보기</button>` : '- <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;">이력보기</button>';
+  document.getElementById('dPrevCode').innerHTML = prevHtml;
+  document.getElementById('dRegion').textContent = p.region;
+  document.getElementById('dAddr').textContent = p.addr;
+  document.getElementById('dPhone').textContent = p.phone;
+  document.getElementById('dUseYn').textContent = p.useYn;
+  document.getElementById('dOpenClose').textContent = p.openClose;
+  document.getElementById('dInternalName').textContent = p.internalName;
+  document.getElementById('dOfficialName').textContent = p.officialName;
+  document.getElementById('dXY').textContent = p.lat + ', ' + p.lng;
+
+  // Panel HIRA history
+  document.querySelector('#dHiraTable tbody').innerHTML = p.hira.length > 0
+    ? p.hira.map(h => `<tr><td>${h.date}</td><td>${h.item}</td><td>${h.before}</td><td>${h.after}</td></tr>`).join('')
+    : '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">갱신 이력 없음</td></tr>';
+
+  // Full detail page
+  document.getElementById('detailPageName').textContent = p.name;
+  document.getElementById('detailPageInPharm').textContent = p.inPharm;
+  const dpStatus = document.getElementById('detailPageStatus');
+  dpStatus.className = 'tag ' + ({'활성':'tag-green','비활성':'tag-gray','폐업':'tag-red','임시':'tag-orange'}[p.status]||'tag-gray');
+  dpStatus.textContent = p.status;
+  const dpRegType = document.getElementById('detailPageRegType');
+  dpRegType.className = 'tag ' + ({'수동':'tag-blue','자동':'tag-yellow','심평원':'tag-green'}[p.regType]||'tag-gray');
+  dpRegType.textContent = p.regType;
+
+  document.getElementById('dp_name').textContent = p.name;
+  document.getElementById('dp_ceo').textContent = p.ceo;
+  document.getElementById('dp_bizNum').textContent = p.bizNum;
+  document.getElementById('dp_code').textContent = p.code;
+  const dpPrevHtml = p.prevCode !== '-' ?
+    `${p.prevCode} <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;margin-left:6px;">이력보기</button>` : '- <button class="btn btn-sm" onclick="openChainModal()" style="font-size:11px;padding:2px 8px;">이력보기</button>';
+  document.getElementById('dp_prevCode').innerHTML = dpPrevHtml;
+  document.getElementById('dp_region').textContent = p.region;
+  document.getElementById('dp_addr').textContent = p.addr;
+  document.getElementById('dp_phone').textContent = p.phone;
+  document.getElementById('dp_useYn').textContent = p.useYn;
+  document.getElementById('dp_openClose').textContent = p.openClose;
+  document.getElementById('dp_internalName').textContent = p.internalName;
+  document.getElementById('dp_officialName').textContent = p.officialName;
+  document.getElementById('dp_xy').textContent = p.lat + ', ' + p.lng;
+
+  document.querySelector('#dp_hiraTable tbody').innerHTML = p.hira.length > 0
+    ? p.hira.map(h => `<tr><td>${h.date}</td><td>${h.item}</td><td>${h.before}</td><td>${h.after}</td></tr>`).join('')
+    : '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">갱신 이력 없음</td></tr>';
+
+  // Edit page
+  document.getElementById('editTitle').textContent = '약국 수정 — ' + p.name;
+  document.getElementById('edit_name').value = p.name;
+  document.getElementById('edit_ceo').textContent = p.ceo;
+  document.getElementById('edit_inPharm').value = p.inPharm;
+  document.getElementById('edit_bizNum').textContent = p.bizNum;
+  document.getElementById('edit_code').textContent = p.code;
+  document.getElementById('edit_prevCode').querySelector('span').textContent = p.prevCode === '-' ? '-' : p.prevCode;
+  document.getElementById('edit_region').value = p.region;
+  document.getElementById('edit_addr').value = p.addr;
+  document.getElementById('edit_phone').value = p.phone;
+  document.getElementById('edit_useYn').value = p.useYn;
+  document.getElementById('edit_openClose').textContent = p.openClose;
+  document.getElementById('edit_status').value = p.status;
+  document.getElementById('edit_internalName').value = p.internalName;
+  document.getElementById('edit_officialName').value = p.officialName;
+  document.getElementById('edit_lat').value = p.lat;
+  document.getElementById('edit_lng').value = p.lng;
+}
+
+// ===== Screen Management =====
+function showScreen(screen) {
+  document.querySelectorAll('.screen-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.page-overlay').forEach(el => el.classList.remove('show'));
+  document.getElementById('screen-list').style.display = 'flex';
+
+  if (screen === 'list') {
+    // default
+  } else if (screen === 'register') {
+    document.getElementById('screen-register').classList.add('show');
+  } else if (screen === 'detail') {
+    if (selectedIdx === null) { selectPharm(0); }
+    document.getElementById('screen-detail').classList.add('show');
+  } else if (screen === 'edit') {
+    if (selectedIdx === null) { selectPharm(0); }
+    document.getElementById('screen-edit').classList.add('show');
+  }
+
+  const labels = { list:'조회', register:'등록', detail:'상세', edit:'수정' };
+  document.querySelectorAll('.screen-btn').forEach(b => {
+    if (b.textContent.trim() === labels[screen]) b.classList.add('active');
+  });
+}
+
+// ===== UI =====
+function toggleFilters() {
+  document.getElementById('expandedFilters').classList.toggle('show');
+}
+
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.section-toggle');
+  if (body.style.display === 'none') { body.style.display = ''; toggle.textContent = '▲'; }
+  else { body.style.display = 'none'; toggle.textContent = '▼'; }
+}
+
+function resetSearch() { document.getElementById('searchInput').value = ''; }
+
+// Init
+renderTable();
+function openChainModal() {
+  const chain = [{code:'PHM-001',name:'온누리약국'},{code:'PHM-003',name:'세브란스약국'},{code:'PHM-007',name:'분당약국'}];
+  const display = document.getElementById('chainDisplay');
+  display.innerHTML = chain.map((n,i) => {
+    const cls = i === chain.length-1 ? 'chain-node current' : 'chain-node';
+    const node = `<div class="${cls}"><div class="code">${n.code}</div><div class="name">${n.name}</div></div>`;
+    return i < chain.length-1 ? node + '<div class="chain-arrow">→</div>' : node;
+  }).join('');
+  document.getElementById('chainModal').classList.add('show');
+}
+function closeChainModal() {
+  document.getElementById('chainModal').classList.remove('show');
+}
+</script>
+
+<!-- Code Chain History Modal -->
+<div class="modal-backdrop" id="chainModal" style="display:none;">
+  <div class="modal" style="width:520px;">
+    <div class="modal-header">
+      <span class="modal-title">이전 코드 이력</span>
+      <button class="modal-close" onclick="closeChainModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:#6B7280;margin-bottom:16px;">약국코드 변경 이력 (코드 체인)</p>
+      <div id="chainDisplay" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;"></div>
+      <table style="width:100%">
+        <thead><tr><th>변경일</th><th>이전 코드</th><th>변경 코드</th><th>사유</th></tr></thead>
+        <tbody>
+          <tr><td>2024-03-15</td><td>PHM-001</td><td>PHM-003</td><td>사업자 변경</td></tr>
+          <tr><td>2025-08-22</td><td>PHM-003</td><td>PHM-007</td><td>인수합병</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
