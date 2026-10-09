@@ -1,0 +1,61 @@
+.theme-hybrid{--bg:#f1f4f8;--paper:#fcfdff;--ink:#243b5a;--muted:#52657d;--accent:#355c8c;--soft:#e2eaf5;--line:#cbd6e4;--old:#edf0f3;--old-ink:#495767;--new:#e2eaf5;--new-ink:#2e507b}
+.theme-hybrid .lb{border:1px dashed var(--old-ink)}
+.theme-hybrid .la{border:1px solid var(--new-ink)}
+.hybrid-scope{padding:20px 24px;background:var(--soft);border-radius:16px;margin-bottom:32px}
+.hybrid-scope strong{font-size:19px}
+.hybrid-scope p{font-size:14px;color:var(--muted);margin:8px 0 0}
+.theme-hybrid .site-header{background:var(--paper)}
+.theme-hybrid #t-exp{margin-bottom:142px}
+.theme-hybrid .exp-subnav{position:fixed;left:35px;width:165px;display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line);padding:0 0 0 12px}
+.exp-subnav a{display:flex;align-items:center;min-height:42px;padding:6px 8px;font-size:14px;color:var(--muted);text-decoration:none;border-radius:6px}
+.exp-subnav a[aria-current]{font-weight:750;color:var(--accent);background:var(--soft)}
+.exp-subnav a:hover{background:var(--soft)}
+@media(max-width:1050px) and (min-width:761px){.theme-hybrid .exp-subnav{left:25px;width:145px}}
+@media(max-width:760px){.theme-hybrid #t-exp{margin-bottom:0}.theme-hybrid .exp-subnav{position:static;display:none;width:100%;border-left:0;border-top:1px solid var(--line);padding:6px 0;flex-direction:row;justify-content:center}.theme-hybrid[data-page="exp"] .exp-subnav{display:flex}.exp-subnav a{font-size:13px;padding:6px 12px}}
+.theme-hybrid .hybrid-hero{display:grid;grid-template-columns:1fr 1.05fr;gap:42px;align-items:center;padding:64px 0 76px}
+.theme-hybrid .hybrid-opening h1{font-size:clamp(34px,3.2vw,50px);line-height:1.35;letter-spacing:-.055em;margin:26px 0}
+.theme-hybrid .hybrid-opening .hero-copy{font-size:17px;line-height:1.9}
+.theme-hybrid .hybrid-opening .actions{margin-top:30px;gap:20px}
+.question-caption{font-size:13px;color:var(--muted);margin:0 0 15px 8px}
+.question-bubble{display:block;background:var(--paper);border:1px solid var(--line);border-radius:34px 34px 34px 6px;padding:24px 28px;margin-bottom:14px;text-decoration:none;color:var(--ink)}
+.question-bubble:nth-of-type(2){margin-left:30px;background:var(--soft)}
+.question-bubble:nth-of-type(3){margin-right:20px}
+.question-bubble>span{font-size:14px;color:var(--muted)}
+.question-bubble h2{font-size:clamp(21px,1.9vw,27px);font-weight:600;line-height:1.5;margin:16px 0 18px;letter-spacing:-.035em}
+.question-bubble small{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.question-bubble:hover{border-color:var(--accent);background:#e7eef8}
+.theme-hybrid .hybrid-index{border-top:1px solid var(--line);padding:64px 0 72px;grid-template-columns:200px 1fr;gap:32px}
+.theme-hybrid .hybrid-index h2{font-size:29px;line-height:1.4}
+.theme-hybrid .hybrid-index .index-intro p{font-size:15px}
+.theme-hybrid .decision-link{padding:27px 38px 27px 16px}
+.theme-hybrid .decision-link h3{font-size:clamp(22px,2.2vw,31px);line-height:1.45}
+.theme-hybrid .decision-link>span:first-child{font-size:14px}
+.theme-hybrid .decision-link .link-mark{right:8px}
+.hybrid-ai{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;border-top:1px solid var(--line);padding:56px 0}
+.hybrid-ai h2{font-size:30px;line-height:1.5;margin:12px 0 20px}
+.hybrid-ai p{font-size:16px}
+.hybrid-result{align-self:center;border-left:3px solid var(--accent);padding:16px 0 16px 25px;display:grid;gap:16px}
+.hybrid-result>span,.hybrid-result small{font-size:13px;color:var(--muted)}
+.hybrid-result strong{font-size:25px;font-family:var(--heading);line-height:1.5}
+.hybrid-proof-list{display:grid;gap:28px;min-width:0}
+.hybrid-proof{border-top:1px solid var(--line);padding-top:24px}
+.hybrid-proof>span{font-size:13px;color:var(--muted)}
+.hybrid-proof h3{font-size:22px;line-height:1.5;margin:10px 0}
+.hybrid-proof p{font-size:15px;line-height:1.85;margin:0 0 14px}
+.hybrid-proof .text-link{font-size:14px}
+.theme-hybrid .decision-answer{font-size:16px;line-height:1.8;color:var(--muted);margin:14px 0 0;max-width:60ch}
+.hybrid-evidence{border-top:1px solid var(--line);padding:48px 0}
+.hybrid-evidence h2{font-size:30px;line-height:1.5}
+.hybrid-evidence .section-heading{align-items:end;gap:24px;margin-bottom:25px}
+.hybrid-evidence .evidence-image{width:100%}
+.theme-hybrid .hybrid-ai{grid-template-columns:1fr;gap:32px}
+.theme-hybrid .hybrid-proof-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.theme-hybrid .hybrid-result,.theme-hybrid .hybrid-proof{align-self:stretch;border:0;border-top:2px solid var(--line);padding:23px 0 0;display:flex;flex-direction:column;gap:12px}
+.theme-hybrid .hybrid-result{border-top-color:var(--accent)}
+.theme-hybrid .hybrid-result strong{font-size:27px}
+.theme-hybrid .hybrid-proof h3{font-size:22px;margin:0}
+.theme-hybrid .hybrid-proof .text-link{margin-top:auto}
+@media(max-width:1100px){.theme-hybrid .hybrid-proof-list{grid-template-columns:1fr}.hybrid-evidence .section-heading{display:block}.hybrid-evidence h2{font-size:26px}}
+@media(min-width:1450px){.theme-hybrid .hybrid-hero{gap:55px}.theme-hybrid .question-bubble{padding:27px 32px}}
+@media(max-width:1100px){.theme-hybrid .hybrid-hero{grid-template-columns:1fr;gap:38px}.theme-hybrid .hybrid-questions{max-width:560px;width:100%;justify-self:center}.theme-hybrid .hybrid-opening h1{font-size:44px}.theme-hybrid .hybrid-index{grid-template-columns:1fr;gap:20px}.theme-hybrid .index-intro br{display:none}.hybrid-ai{grid-template-columns:1fr}}
+@media(max-width:760px){.theme-hybrid .hybrid-hero{padding:36px 0 44px;gap:32px}.theme-hybrid .hybrid-opening h1{font-size:34px}.theme-hybrid .hybrid-opening .hero-copy{font-size:16px}.theme-hybrid .hybrid-opening .actions{gap:15px}.question-bubble{padding:22px;border-radius:28px 28px 28px 5px}.question-bubble:nth-of-type(2){margin-left:20px}.question-bubble:nth-of-type(3){margin-right:12px}.question-bubble h2{font-size:23px}.question-bubble h2 br{display:block}.theme-hybrid .hybrid-index{padding:36px 0}.theme-hybrid .decision-link{padding-left:0}.theme-hybrid .decision-link h3{font-size:23px}.hybrid-ai{padding:36px 0;gap:25px}.hybrid-ai h2{font-size:27px}.hybrid-result strong{font-size:24px}}
