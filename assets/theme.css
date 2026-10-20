@@ -1,0 +1,20 @@
+/* Palette (2026-10-21)
+   main  #6F80C3  selected states, borders, arrows, large emphasis text
+   sub   #C8AFD0  decoration only (never text); tinted as --sub-soft for chips/badges
+   bg    #F4F3FA  page, tiles, diagram ground
+   ink   #252B45  body and headings
+   --accent #566AB8 is main darkened just enough for small text and white-on-fill buttons (AA 4.5:1). */
+body.theme-hybrid{
+ --bg:#F4F3FA;--paper:#FFFFFF;--ink:#252B45;--muted:#585E78;
+ --accent:#566AB8;--brand:#6F80C3;--sub:#C8AFD0;--sub-soft:#F1E8F4;
+ --soft:#E9EBF7;--line:#DDDAEA;
+ --old:#EEEEF3;--old-ink:#4C5164;--new:#E9EBF7;--new-ink:#45569E;
+ background:var(--bg);color:var(--ink)
+}
+.theme-hybrid nav button[aria-selected=true]{background:var(--accent);color:var(--paper)}
+.theme-hybrid .brand-mark{background:var(--brand);color:var(--paper)}
+.theme-hybrid .question-bubble:hover{background:var(--soft);border-color:var(--brand)}
+.theme-hybrid .stage-label span{color:var(--new-ink)}
+.theme-hybrid .hybrid-result,.theme-hybrid .hybrid-result{border-top-color:var(--brand)}
+.theme-hybrid a:focus-visible,.theme-hybrid button:focus-visible,.theme-hybrid summary:focus-visible{outline-color:var(--brand)}
+.theme-hybrid ::selection{background:var(--sub-soft)}
