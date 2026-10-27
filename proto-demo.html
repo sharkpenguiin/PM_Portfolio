@@ -341,7 +341,7 @@ tbody tr.selected { background:var(--primary-light); }
           <div class="detail-header">
             <div class="detail-profile">
               <div>
-                <div class="detail-name" id="detailName">온누리약국</div>
+                <div class="detail-name" id="detailName">새봄약국</div>
                 <div class="detail-meta">
                   <span style="font-size:12px;color:var(--text-secondary)" id="detailInPharm">일반약국</span>
                   <span class="tag tag-green" id="detailStatus">활성</span>
@@ -476,7 +476,7 @@ tbody tr.selected { background:var(--primary-light); }
         <!-- Header -->
         <div class="detail-page-header">
           <div class="detail-page-title">
-            <h1 id="detailPageName">온누리약국</h1>
+            <h1 id="detailPageName">새봄약국</h1>
             <span style="font-size:13px;color:var(--text-secondary)" id="detailPageInPharm">일반약국</span>
             <span class="tag tag-green" id="detailPageStatus">활성</span>
             <span class="tag tag-blue" id="detailPageRegType">수동</span>
@@ -547,14 +547,14 @@ tbody tr.selected { background:var(--primary-light); }
         <div class="user-info"><span class="name">박지현</span> <span class="role">차장</span></div>
       </div>
       <div class="form-content">
-        <div class="form-title" id="editTitle">약국 수정 — 온누리약국</div>
+        <div class="form-title" id="editTitle">약국 수정 — 새봄약국</div>
 
         <!-- 기본 정보 -->
         <div class="form-section">
           <div class="form-section-title">기본 정보 <span class="source-tag legacy">현행 시스템 기반</span></div>
           <div class="form-grid">
-            <div class="form-group"><label class="form-label"><span class="required">*</span> 약국명</label><input class="form-input" id="edit_name" value="온누리약국"></div>
-            <div class="form-group"><label class="form-label">대표자명</label><div class="form-readonly" id="edit_ceo">김온누리</div></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 약국명</label><input class="form-input" id="edit_name" value="새봄약국"></div>
+            <div class="form-group"><label class="form-label">대표자명</label><div class="form-readonly" id="edit_ceo">김새봄</div></div>
             <div class="form-group"><label class="form-label">원내약국여부</label><select class="form-select" id="edit_inPharm"><option>일반약국</option><option>원내약국</option></select></div>
             <div class="form-group"><label class="form-label">사업자번호</label><div class="form-readonly" id="edit_bizNum">123-45-67890</div></div>
             <div class="form-group"><label class="form-label">약국코드</label><div class="form-readonly" id="edit_code">PHM-001</div></div>
@@ -574,8 +574,8 @@ tbody tr.selected { background:var(--primary-light); }
             <div class="form-group"><label class="form-label"><span class="required">*</span> 사용여부</label><select class="form-select" id="edit_useYn"><option>사용</option><option>미사용</option></select></div>
             <div class="form-group"><label class="form-label">개폐업상태</label><div class="form-readonly" id="edit_openClose">영업중</div></div>
             <div class="form-group"><label class="form-label">상태</label><select class="form-select" id="edit_status"><option>활성</option><option>비활성</option><option>폐업</option><option>임시</option></select></div>
-            <div class="form-group"><label class="form-label"><span class="required">*</span> 내부명칭</label><input class="form-input" id="edit_internalName" value="온누리약국(내부)"></div>
-            <div class="form-group"><label class="form-label">정식명칭</label><input class="form-input" id="edit_officialName" value="온누리약국"></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span> 내부명칭</label><input class="form-input" id="edit_internalName" value="새봄약국(내부)"></div>
+            <div class="form-group"><label class="form-label">정식명칭</label><input class="form-input" id="edit_officialName" value="새봄약국"></div>
             <div class="form-group"><label class="form-label">XY좌표(위도, 경도)</label><div style="display:flex;gap:8px;"><input class="form-input" type="number" id="edit_lat" value="37.5700" style="flex:1;"><input class="form-input" type="number" id="edit_lng" value="126.9920" style="flex:1;"></div></div>
           </div>
         </div>
@@ -592,11 +592,11 @@ tbody tr.selected { background:var(--primary-light); }
 <script>
 // ===== Sample Data =====
 const pharmList = [
-  { no:1, code:'PHM-001', name:'온누리약국', bizNum:'123-45-67890', ceo:'김온누리', region:'서울', status:'활성', regDate:'2025-03-15', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 종로구 종로 123', phone:'02-1234-5678', useYn:'사용', openClose:'영업중', internalName:'온누리약국(내부)', officialName:'온누리약국', lat:37.5700, lng:126.9920, hira:[{date:'2026-03-01 09:00',item:'약국명',before:'온누리약국(구)',after:'온누리약국'},{date:'2025-12-15 14:30',item:'개폐업상태',before:'휴업',after:'영업중'}] },
+  { no:1, code:'PHM-001', name:'새봄약국', bizNum:'123-45-67890', ceo:'김새봄', region:'서울', status:'활성', regDate:'2025-03-15', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 종로구 종로 123', phone:'02-1234-5678', useYn:'사용', openClose:'영업중', internalName:'새봄약국(내부)', officialName:'새봄약국', lat:37.5700, lng:126.9920, hira:[{date:'2026-03-01 09:00',item:'약국명',before:'새봄약국(구)',after:'새봄약국'},{date:'2025-12-15 14:30',item:'개폐업상태',before:'휴업',after:'영업중'}] },
   { no:2, code:'PHM-002', name:'메디팜약국', bizNum:'234-56-78901', ceo:'이메디', region:'서울', status:'활성', regDate:'2025-04-01', regType:'심평원', inPharm:'일반약국', prevCode:'OLD-P02', addr:'서울특별시 강남구 역삼로 456', phone:'02-2345-6789', useYn:'사용', openClose:'영업중', internalName:'메디팜약국(내부)', officialName:'메디팜약국', lat:37.5010, lng:127.0396, hira:[{date:'2026-01-10 10:15',item:'대표자명',before:'박메디',after:'이메디'}] },
-  { no:3, code:'PHM-003', name:'세브란스약국', bizNum:'345-67-89012', ceo:'박세브', region:'서울', status:'활성', regDate:'2025-05-20', regType:'자동', inPharm:'원내약국', prevCode:'-', addr:'서울특별시 서대문구 연세로 50', phone:'02-3456-7890', useYn:'사용', openClose:'영업중', internalName:'세브란스약국(내부)', officialName:'세브란스약국', lat:37.5622, lng:126.9410, hira:[{date:'2026-02-20 11:00',item:'주소',before:'서울특별시 서대문구 연세로 48',after:'서울특별시 서대문구 연세로 50'}] },
-  { no:4, code:'PHM-004', name:'삼성약국', bizNum:'456-78-90123', ceo:'정삼성', region:'경기', status:'활성', regDate:'2025-06-10', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'경기도 수원시 영통구 광교로 789', phone:'031-4567-8901', useYn:'사용', openClose:'영업중', internalName:'삼성약국(내부)', officialName:'삼성약국', lat:37.2911, lng:127.0469, hira:[] },
-  { no:5, code:'PHM-005', name:'한미약국', bizNum:'567-89-01234', ceo:'최한미', region:'부산', status:'비활성', regDate:'2025-07-01', regType:'심평원', inPharm:'일반약국', prevCode:'OLD-P05', addr:'부산광역시 해운대구 해운대로 321', phone:'051-5678-9012', useYn:'미사용', openClose:'영업중', internalName:'한미약국(내부)', officialName:'한미약국', lat:35.1631, lng:129.1636, hira:[{date:'2025-11-01 09:30',item:'연락처',before:'051-5555-1234',after:'051-5678-9012'}] },
+  { no:3, code:'PHM-003', name:'푸른약국', bizNum:'345-67-89012', ceo:'박푸른', region:'서울', status:'활성', regDate:'2025-05-20', regType:'자동', inPharm:'원내약국', prevCode:'-', addr:'서울특별시 서대문구 신촌로 321', phone:'02-3456-7890', useYn:'사용', openClose:'영업중', internalName:'푸른약국(내부)', officialName:'푸른약국', lat:37.5622, lng:126.9410, hira:[{date:'2026-02-20 11:00',item:'주소',before:'서울특별시 서대문구 신촌로 311',after:'서울특별시 서대문구 신촌로 321'}] },
+  { no:4, code:'PHM-004', name:'하늘약국', bizNum:'456-78-90123', ceo:'정하늘', region:'경기', status:'활성', regDate:'2025-06-10', regType:'수동', inPharm:'일반약국', prevCode:'-', addr:'경기도 수원시 영통구 광교로 789', phone:'031-4567-8901', useYn:'사용', openClose:'영업중', internalName:'하늘약국(내부)', officialName:'하늘약국', lat:37.2911, lng:127.0469, hira:[] },
+  { no:5, code:'PHM-005', name:'햇살약국', bizNum:'567-89-01234', ceo:'최햇살', region:'부산', status:'비활성', regDate:'2025-07-01', regType:'심평원', inPharm:'일반약국', prevCode:'OLD-P05', addr:'부산광역시 해운대구 해운대로 321', phone:'051-5678-9012', useYn:'미사용', openClose:'영업중', internalName:'햇살약국(내부)', officialName:'햇살약국', lat:35.1631, lng:129.1636, hira:[{date:'2025-11-01 09:30',item:'연락처',before:'051-5555-1234',after:'051-5678-9012'}] },
   { no:6, code:'PHM-006', name:'강남약국', bizNum:'678-90-12345', ceo:'강남이', region:'서울', status:'활성', regDate:'2025-08-15', regType:'자동', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 강남구 강남대로 654', phone:'02-6789-0123', useYn:'사용', openClose:'영업중', internalName:'강남약국(내부)', officialName:'강남약국', lat:37.4979, lng:127.0276, hira:[] },
   { no:7, code:'PHM-007', name:'분당약국', bizNum:'789-01-23456', ceo:'김분당', region:'경기', status:'폐업', regDate:'2024-12-01', regType:'수동', inPharm:'일반약국', prevCode:'OLD-P07', addr:'경기도 성남시 분당구 판교로 987', phone:'031-7890-1234', useYn:'미사용', openClose:'폐업', internalName:'분당약국(내부)', officialName:'분당약국', lat:37.3947, lng:127.1113, hira:[{date:'2026-04-01 08:00',item:'개폐업상태',before:'영업중',after:'폐업'}] },
   { no:8, code:'PHM-008', name:'서울약국', bizNum:'890-12-34567', ceo:'박서울', region:'서울', status:'활성', regDate:'2025-09-01', regType:'심평원', inPharm:'일반약국', prevCode:'-', addr:'서울특별시 중구 을지로 111', phone:'02-8901-2345', useYn:'사용', openClose:'영업중', internalName:'서울약국(내부)', officialName:'서울약국', lat:37.5660, lng:126.9784, hira:[] },
@@ -755,7 +755,7 @@ function resetSearch() { document.getElementById('searchInput').value = ''; }
 // Init
 renderTable();
 function openChainModal() {
-  const chain = [{code:'PHM-001',name:'온누리약국'},{code:'PHM-003',name:'세브란스약국'},{code:'PHM-007',name:'분당약국'}];
+  const chain = [{code:'PHM-001',name:'새봄약국'},{code:'PHM-003',name:'푸른약국'},{code:'PHM-007',name:'분당약국'}];
   const display = document.getElementById('chainDisplay');
   display.innerHTML = chain.map((n,i) => {
     const cls = i === chain.length-1 ? 'chain-node current' : 'chain-node';
@@ -770,7 +770,7 @@ function closeChainModal() {
 </script>
 
 <!-- Code Chain History Modal -->
-<div class="modal-backdrop" id="chainModal" style="display:none;">
+<div class="modal-backdrop" id="chainModal">
   <div class="modal" style="width:520px;">
     <div class="modal-header">
       <span class="modal-title">이전 코드 이력</span>
