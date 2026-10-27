@@ -148,3 +148,18 @@
 
 /* diagram type badge (top right); evidence notes stay in the caption */
 .cv-badge{align-self:flex-end;font-size:13px;font-weight:700;color:var(--ink);background:var(--sub-soft);border-radius:999px;padding:2px 12px;margin-bottom:-6px}
+/* Design pass 2026-10-28: case status badges, folded secondary cases, readable evidence captures */
+.cv-status{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:13px;font-weight:700;letter-spacing:0;vertical-align:1px}
+.erp-toc div+p{margin-top:16px}
+.more-cases{margin:24px 0}
+.more-cases>summary{cursor:pointer;padding:20px 24px;border:1px dashed var(--line);border-radius:20px;background:var(--paper);font-weight:700}
+.more-cases>summary span{display:block;margin-top:4px;font-size:14px;font-weight:500;color:var(--muted)}
+.more-cases[open]>summary{margin-bottom:24px}
+.cv-split>.fig{flex:1 1 100%}
+.cv-split>.cv-shot{flex:1 1 100%;max-width:820px}
+@media(max-width:760px){
+.cv-split>.fig,.cv-split>.cv-shot{overflow-x:auto}
+.cv-split>.fig .shot,.cv-split>.cv-shot .zoom{min-width:620px}
+.cv-split>.fig figcaption,.cv-split>.cv-shot figcaption{position:sticky;left:0}
+.cv-split>.fig figcaption:before,.cv-split>.cv-shot figcaption:before{content:"캡처를 옆으로 밀어 볼 수 있습니다.";display:block;margin-bottom:6px;color:var(--accent);font-weight:600}
+}

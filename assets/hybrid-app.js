@@ -8,6 +8,7 @@
  function resolve(raw){const id=aliases[raw]||raw||'home';const el=document.getElementById(id);return el&&el.closest('[role=tabpanel]')?id:'home';}
  function show(raw,{push=false,restore=false,tabRestore=false,focus=true}={}){
   const id=resolve(raw),target=document.getElementById(id),page=target.closest('[role=tabpanel]');
+  const fold=target.closest('details');if(fold)fold.open=true;
   if(current){positions.set(current,window.scrollY);pagePositions.set(document.body.dataset.page,window.scrollY);}
   if(push&&location.hash!=='#'+id)history.pushState({id},'', '#'+id);
   panels.forEach(p=>p.hidden=p!==page);

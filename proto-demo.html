@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=1280">
+<script>if(Math.min(screen.width,screen.height)<760)document.documentElement.classList.add('narrow-device');</script>
 <title>약국 관리 - B2B ERP 프로토타입 (재현 · 비식별화)</title>
 <style>
 body{word-break:keep-all;overflow-wrap:break-word}
@@ -234,9 +235,14 @@ tbody tr.selected { background:var(--primary-light); }
 #chainDisplay .chain-node .code { font-weight:700; font-size:14px; }
 #chainDisplay .chain-node .name { font-size:11px; margin-top:2px; }
 #chainDisplay .chain-arrow { font-size:20px; color:#4B89DC; font-weight:700; }
+/* Phones render the desktop layout at width=1280; keep the banner and screen switcher legible there */
+.pc-hint{display:none}
+.narrow-device .pc-hint{display:block;width:100%;color:#E4B583}
+.narrow-device .demo-banner{font-size:40px!important;padding:28px 44px!important}
+.narrow-device .screen-switch{transform:scale(2.6);transform-origin:right bottom}
 </style>
 </head>
-<body><div style="position:sticky;top:0;z-index:999;background:#26262B;color:#F5F4F1;padding:10px 16px;font:500 13px/1.5 'Pretendard',sans-serif;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>실제 제작 프로토타입 사본 — 고객사 정보 비식별화 · 데이터는 전부 더미입니다</span><a href="index.html#pf-erp" style="color:#E4B583;text-decoration:underline;text-underline-offset:3px">← 케이스로 돌아가기</a></div>
+<body><div class="demo-banner" style="position:sticky;top:0;z-index:999;background:#26262B;color:#F5F4F1;padding:10px 16px;font:500 13px/1.5 'Pretendard',sans-serif;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>실제 제작 프로토타입 사본 — 고객사 정보 비식별화 · 데이터는 전부 더미입니다</span><span class="pc-hint">PC 화면에서 보기를 권장합니다 · 두 손가락으로 확대해서 볼 수 있습니다</span><a href="index.html#pf-erp" style="color:#E4B583;text-decoration:underline;text-underline-offset:3px">← 케이스로 돌아가기</a></div>
 
 <!-- Screen Switcher -->
 <div class="screen-switch">

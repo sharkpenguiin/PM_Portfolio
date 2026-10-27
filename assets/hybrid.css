@@ -32,7 +32,7 @@
 .question-bubble:nth-of-type(3){margin-right:20px}
 .question-bubble>span{font-size:14px;color:var(--muted)}
 .question-bubble h2{font-size:clamp(21px,1.9vw,27px);font-weight:600;line-height:1.5;margin:16px 0 18px;letter-spacing:-.035em}
-.question-bubble small{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.question-bubble small{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
 .question-bubble:hover{border-color:var(--accent);background:#e7eef8}
 .theme-hybrid .hybrid-index{border-top:1px solid var(--line);padding:64px 0 72px;grid-template-columns:200px 1fr;gap:32px}
 .theme-hybrid .hybrid-index h2{font-size:29px;line-height:1.4}
@@ -69,3 +69,5 @@
 @media(min-width:1450px){.theme-hybrid .hybrid-hero{gap:55px}.theme-hybrid .question-bubble{padding:27px 32px}}
 @media(max-width:1100px){.theme-hybrid .hybrid-hero{grid-template-columns:1fr;gap:38px}.theme-hybrid .hybrid-questions{max-width:560px;width:100%;justify-self:center}.theme-hybrid .hybrid-opening h1{font-size:44px}.theme-hybrid .hybrid-index{grid-template-columns:1fr;gap:20px}.theme-hybrid .index-intro br{display:none}.hybrid-ai{grid-template-columns:1fr}}
 @media(max-width:760px){.theme-hybrid .hybrid-hero{padding:36px 0 44px;gap:32px}.theme-hybrid .hybrid-opening h1{font-size:34px}.theme-hybrid .hybrid-opening .hero-copy{font-size:16px}.theme-hybrid .hybrid-opening .actions{gap:15px}.question-bubble{padding:22px;border-radius:28px 28px 28px 5px}.question-bubble:nth-of-type(2){margin-left:20px}.question-bubble:nth-of-type(3){margin-right:12px}.question-bubble h2{font-size:23px}.question-bubble h2 br{display:block}.theme-hybrid .hybrid-index{padding:36px 0}.theme-hybrid .decision-link{padding-left:0}.theme-hybrid .decision-link h3{font-size:23px}.hybrid-ai{padding:36px 0;gap:25px}.hybrid-ai h2{font-size:27px}.hybrid-result strong{font-size:24px}}
+/* Design pass 2026-10-28: 44px touch targets for text links on phones */
+@media(max-width:760px){.theme-hybrid .text-link,.theme-hybrid .header-resume,.theme-hybrid .site-footer a{display:inline-flex;align-items:center;min-height:44px}}
