@@ -1,0 +1,428 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#6F80C3"><meta name="description" content="조명호 서비스 기획 PM. 사용자 업무를 화면·정책으로 구체화하고, AI 산출물을 근거로 검증합니다."><meta property="og:title" content="조명호 · 서비스 기획 포트폴리오"><meta property="og:description" content="ERP 기획, AI 업무 개선, 공공 시스템의 화면·검증 흐름 개선 사례."><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><title>조명호 | 서비스 기획 PM 포트폴리오</title><link rel="stylesheet" href="assets/styles.css?v=20261028"><script src="assets/hybrid-app.js?v=20261028" defer></script><link rel="stylesheet" href="assets/hybrid.css?v=20261028"><link rel="stylesheet" href="assets/case.css?v=20261028"><link rel="stylesheet" href="assets/theme.css?v=20261021"><style id="reading-emphasis">
+/* Reading hierarchy: preserve text and role boundaries, emphasize decisions only. */
+.theme-hybrid strong.reading-point{font-weight:750;color:inherit}
+.theme-hybrid .res small{font-size:14px;line-height:1.7}
+</style><style>
+.edi-background{margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.edi-background summary{cursor:pointer;line-height:1.7;font-weight:650}
+.edi-background summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.edi-background .txt{margin-top:20px}
+.edi-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.edi-option{min-width:0;padding:22px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;color:#26374d}
+.edi-option.selected{background:#edf3fb;border-color:#7393bb}
+.edi-option .option-label{font-size:14px;font-weight:650;margin:0 0 8px}
+.edi-option h3{font-size:22px;margin:0 0 14px;line-height:1.4}
+.edi-option p{font-size:16px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.edi-option .option-reason{margin-top:14px;font-weight:700}
+@media(max-width:640px){.edi-options{grid-template-columns:1fr;gap:12px}.edi-option{padding:18px}}
+
+.window-diagram{height:118px;margin:12px 0 16px;position:relative;overflow:hidden;padding:10px;background:#e5ebf2;border-radius:6px;color:#26374d}
+.schematic-window{height:100%;border:1px solid #93a5ba;border-radius:4px;background:#fff;padding:10px}
+.window-diagram span{display:block;font-size:13px;font-weight:650;margin-bottom:10px}
+.window-diagram i{display:block;height:5px;margin:9px 0;background:#d7e1ee;width:78%}
+.modal-diagram .schematic-window{opacity:.65}
+.schematic-modal{position:absolute;left:40%;top:32%;width:48%;height:62%;padding:8px;background:white;border:2px solid #7a8ba1;border-radius:4px}
+.paired-diagram{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.proof-window{border:2px solid #456d9d}
+#erp-edi .diagram-note{font-size:13px;line-height:1.6;color:#526277;margin:12px 0 20px}
+.edi-focus{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edi-focus figure{min-width:0;margin:0}
+.edi-focus .focus-crop{display:flex;align-items:center;justify-content:center;width:100%;height:230px;overflow:hidden;padding:12px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:zoom-in}
+.focus-crop svg{display:block;height:100%;max-width:100%}
+.focus-button svg{width:100%;height:auto}
+.edi-focus figcaption{display:grid;gap:6px;margin-top:12px;font-size:14px;line-height:1.6}
+.edi-focus figcaption b{font-size:16px;color:#26374d}
+.edi-full-context{margin:16px 0}
+.edi-full-context summary{cursor:pointer;font-weight:650}
+.focus-crop:focus-visible,.edi-full-context summary:focus-visible{outline:2px solid #456d9d;outline-offset:4px}
+@media(max-width:640px){.edi-focus{grid-template-columns:1fr;gap:20px}.edi-focus .focus-button{height:100px}}
+</style><style id="request-path-style">
+.theme-hybrid .request-path{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid #cbd5e1}
+.theme-hybrid .request-path li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:20px 16px;border-bottom:1px solid #cbd5e1}
+.theme-hybrid .request-stage{color:#506581;font-size:14px;font-weight:650;padding-top:3px}
+.theme-hybrid .request-path strong{display:block;color:#26374d;font-size:18px;line-height:1.5}
+.theme-hybrid .request-path p{margin:6px 0 0;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.theme-hybrid .request-path .request-decision{background:#edf3fb;border-left:3px solid #385b89;padding-left:13px}
+@media(max-width:640px){.theme-hybrid .request-path li{grid-template-columns:48px minmax(0,1fr);gap:12px;padding-right:10px;padding-left:10px}.theme-hybrid .request-path .request-decision{padding-left:7px}}
+</style><style>
+.review-detail{margin:24px 0 0;border-top:1px solid #cbd5e1;padding-top:16px}
+.review-detail>summary{cursor:pointer;font-weight:650;line-height:1.7;color:#385b89}
+.review-detail>summary:focus-visible{outline:2px solid #385b89;outline-offset:4px}
+.review-detail[open]>summary{margin-bottom:20px}
+</style><style>.question-bubble .bubble-answer{margin:6px 0 10px;font-size:14px;line-height:1.55;font-weight:400;opacity:.75}.site-footer .footer-note{margin-top:6px;max-width:560px;font-size:12px;line-height:1.5;opacity:.7}.case-more{margin-top:14px}.next-metric{margin:18px 0 0;padding:10px 14px;border-left:3px solid var(--line);font-size:14px;line-height:1.6;color:var(--muted)}.next-metric b{display:block;margin-bottom:2px;font-size:13px;font-weight:650;color:var(--ink)}</style>
+<meta name="robots" content="noindex"></head><body class="theme-workspace theme-hybrid"><p class="v1-notice" style="margin:0;padding:10px 16px;background:#E8EEFB;color:#22305F;font-size:14px;line-height:1.6;text-align:center">이전 버전의 포트폴리오입니다(2026년 10월 개편 전). <a href="index.html" style="color:#2D5BCF;font-weight:700;text-decoration:underline;text-underline-offset:3px">새 포트폴리오로 가기</a></p><a class="skip" href="#main">본문 바로가기</a><header class="site-header"><a href="#home" data-go="home" class="brand"><span class="brand-mark" aria-hidden="true">ㅈㅁㅎ</span><span><strong>조명호</strong><small>서비스 기획 PM</small></span></a><nav role="tablist" aria-label="포트폴리오 메뉴"><button role="tab" id="t-home" aria-controls="home" aria-selected="true">홈</button><button role="tab" id="t-erp" aria-controls="erp" aria-selected="false">ERP 기획</button><button role="tab" id="t-ai" aria-controls="ai" aria-selected="false">AI 업무 개선</button><button role="tab" id="t-exp" aria-controls="exp" aria-selected="false">공공·운영</button><button role="tab" id="t-about" aria-controls="about" aria-selected="false">소개</button></nav><nav class="exp-subnav" aria-label="공공·운영 사례"><a href="#exp-k-water" data-go="exp-k-water">수자원공사</a><a href="#exp-finance" data-go="exp-finance">기획재정부</a><a href="#exp-coupang" data-go="exp-coupang">쿠팡 Ads</a></nav><a class="header-resume" href="resume.pdf">이력서 PDF</a></header><main id="main" tabindex="-1"><section id="home" role="tabpanel" aria-labelledby="t-home" class="wrap home-page"><header class="hybrid-hero"><div class="hybrid-opening"><p class="identity">조명호 · 서비스 기획 PM</p><h1>복잡한 B2B 업무를,<br> 기준이 서는 흐름으로.</h1><p class="hero-copy">제약 유통 ERP 18개 업무 영역을 단독 기획하며<br> 검증 단위와 구축 순서처럼<br> 일의 구조를 바꾸는 판단을 했습니다.</p><div class="actions"><a class="action" href="#erp" data-go="erp">ERP 기획 살펴보기</a><a class="text-link" href="resume.pdf">이력서 PDF</a></div></div><div class="hybrid-questions"><p class="question-caption">실제 사례에서 내린 기획 판단</p><a class="question-bubble" href="#erp-sales" data-go="erp-sales"><span>웰던 · 매출자료 검증</span><h2>검증 단위를 왜<br> 업체에서 오류로 바꿨을까?</h2><p class="bubble-answer">업체마다 반복하던 확인을 오류 유형별로 모아 한 번에 처리하도록 설계했습니다.</p><small>판단과 설계 보기 <span aria-hidden="true">↗</span></small></a><a class="question-bubble" href="#erp-order" data-go="erp-order"><span>웰던 · ERP 구축 순서</span><h2>마스터데이터보다<br> 정산을 먼저 만든 이유는?</h2><p class="bubble-answer">실무자·TF와 자료의 분류·연결 구조를 확인하고, 정산 우선 구축을 고객사와 합의했습니다.</p><small>판단과 설계 보기 <span aria-hidden="true">↗</span></small></a><a class="question-bubble" href="#exp-finance" data-go="exp-finance"><span>기재부 · 결산시스템</span><h2>화면을 고치기 전에<br> 무엇을 먼저 해야 했을까?</h2><p class="bubble-answer">재작업 위험을 보고 계산 로직·백엔드 개편을 앞당기도록 제안해 계획에 반영했습니다.</p><small>판단과 설계 보기 <span aria-hidden="true">↗</span></small></a></div></header><section class="hybrid-evidence"><div class="hybrid-scope"><strong>ERP·협력사 포털 18개 업무 영역 단독 기획</strong><p>요구 정의 → 화면·정책 → PRD·프로토타입 → 개발 전달</p></div><div class="section-heading"><div><span class="section-kicker">웰던 · EDI 기획 프로토타입</span><h2>판단은 이렇게 화면에 담았습니다.</h2><p>당월 수량과 확정수량을 나누고, 증빙은 별도 창에서 대조하도록 기획했습니다.</p></div><a class="text-link" href="#erp-edi" data-go="erp-edi">설계 근거 읽기</a></div><button class="evidence-image" data-full="full-edi" aria-label="EDI 프로토타입 원본 확대"><img src="assets/evidence-5f89120bf089.png" alt="EDI 입력·대조 영역의 기획 프로토타입" loading="lazy"><span>원본 화면 확대</span></button><p class="small">프로토타입 일부</p></section><section class="hybrid-ai"><div><span class="section-kicker">AI 업무 개선</span><h2>초안을 만드는 일에서,<br> 팀이 믿고 쓰는 일까지.</h2><p>AI 산출물을 원문과 대조하는 검수 기준을 만들고,<br> 문서의 출처를 함께 답하는 슬랙 Q&A 봇을 구성했습니다.</p><a class="text-link" href="#ai" data-go="ai">AI 적용 과정과 산출물 보기</a></div><div class="hybrid-proof-list"><div class="hybrid-result"><span>Claude 스킬·에이전트 워크플로 10종으로 반복 문서·기획 업무 자동화</span><strong>자동화한 업무에 드는 본인 시간 약 40% 감소</strong><small>약 한 달간 도입 전후 직접 비교<br> AI 결과의 검수·수정 시간 포함</small></div><article class="hybrid-proof"><span>검증 체계</span><h3>5대 검증 기준을 스킬 지침으로</h3><p>요구에 없던 자동승인 기능을 원문과 대조해 삭제하고 검수 지침을 보완했습니다.</p><a class="text-link" href="#ai" data-go="ai">검증 기준과 사례 보기</a></article><article class="hybrid-proof"><span>팀 활용</span><h3>슬랙 Q&amp;A 봇 · AI 스킬 PM 4명 실사용</h3><p>출처 표시·추정 답변 금지를 적용한 슬랙 Q&amp;A 봇을 팀원들이 썼고, 옆 팀의 요청으로 그 팀 전용 봇도 따로 만들었습니다. AI 스킬은 대표 포함 PM 4명이 사용했고, 퇴사 전 사내 AX 담당자에게 인수인계했습니다.</p><a class="text-link" href="#ai-ssot" data-go="ai-ssot">팀이 서로 다른 답을 알고 있다면?</a></article></div></section><section class="workspace-files"><h2>판단의 근거도 함께 확인하세요.</h2><div><a href="#erp-evidence" data-go="erp-evidence"><span class="file-icon">문서</span><b>PRD·결정로그</b><small>화면과 정책을 구체화한 산출물</small></a><a href="proto-demo.html"><span class="file-icon">데모</span><b>약국 관리 프로토타입</b><small>모의 데이터 기반 화면 동작 시연</small></a><a href="resume.pdf"><span class="file-icon">PDF</span><b>이력서</b><small>경력과 담당 역할</small></a></div></section></section><section id="erp" role="tabpanel" aria-labelledby="t-erp" class="wrap detail-page" hidden>
+<header class="phead erp-overview" id="erp-overview" tabindex="-1"><p class="backline"><a href="#home" data-go="home">프로젝트 탐색으로</a></p><p class="stage-label"><span>01</span>프로젝트 개요</p><p class="meta">웰던프로덕트 · PM · 2026.04–2026.06</p><h1>자료의 성격에 맞춰<br> 정산 업무의 검증 흐름을 새로 설계했습니다.</h1><p class="intro">요구 정의부터 정책·화면 설계, 프로토타입 제작, 개발 전달까지 기획했습니다.</p>
+<ul class="tags"><li>18개 업무 영역</li><li>기획 전담</li><li>프로토타입 · PRD · 결정로그</li></ul><p class="small">아래는 그중 EDI·매출자료 검증 흐름과 입력·미확정 자료 처리 기준, 구축 순서를 조정한 사례입니다.</p><p class="key"><span class="kb">기존 흐름</span><span class="ka">기획한 흐름</span></p></header>
+<section class="sec stage-panel" id="erp-problem" tabindex="-1"><p class="stage-label"><span>02</span>문제 발견</p><h2>입력 후 오류 원인을 다시 찾는 업무</h2><div class="txt"><p>거래처 자료는 이메일·우편·카카오톡으로 내부 실무자에게 전달됐습니다. 실무자가 파일을 취합하고 엑셀로 정리해 입력하는 과정에서 자료 중복·누락과 잘못 전달된 자료를 확인해야 했습니다.</p><p>EDI 작업은 여러 메뉴에 흩어져 있었고, 입력값이 틀렸는지 원본 자료에 문제가 있는지 확인하려면 자료를 다시 대조해야 했습니다. 매출자료에서는 같은 제품코드 오류가 여러 업체에 반복됐습니다.</p></div></section><section class="stage-group" id="erp-judgments" tabindex="-1"><p class="stage-label"><span>03</span>판단과 설계</p><h2>업무 흐름과 데이터의 성격에 따라 처리 방식을 나눴습니다.</h2><div class="erp-toc" role="navigation" aria-label="ERP 판단 사례 바로가기"><p>대표 판단 사례</p><div><button type="button" data-go="erp-sales">검증 단위 변경</button><button type="button" data-go="erp-order">구축 순서 조정</button><button type="button" data-go="erp-edi">증빙 대조 화면</button></div><p>보조 사례</p><div><button type="button" data-go="erp-input">입력 경로별 정책</button><button type="button" data-go="erp-unverified">미확정 자료 처리</button></div></div><section class="sec" id="erp-sales" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">웰던 · 매출자료 검증 · 판단 사례 01 <span class="cv-status">기획·고객사 합의</span></p><h2 class="cv-title">같은 제품코드 오류가 업체마다 반복돼서, 오류별로 모아 한 번에 처리하도록 설계했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">확인 단위</p><p class="v"><span class="from">업체별</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">오류별</span></p></div>
+<div class="cv-tile"><p class="k">발견 시점</p><p class="v"><span class="from">정산할 때</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">업로드할 때</span></p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">기존 · 업체별 검증</p>
+<ul class="cv-items"><li class="row"><span class="cv-chip">업체 A</span>제품코드 X 오류 확인</li><li class="row"><span class="cv-chip">업체 B</span>제품코드 X 오류 확인</li><li class="row"><span class="cv-chip">업체 C</span>제품코드 X 오류 확인</li></ul>
+<p class="sum">같은 오류를 업체 수만큼 반복 확인</p>
+<p class="foot">미매칭 자료는 정산에서 빠진 뒤 금액 대조로 발견 → 다음 달 이후 반영</p></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new"><p class="lbl">설계 · 오류별 통합 검증</p>
+<ul class="cv-items"><li>업체 A·B·C 자료를 한 번에 업로드</li><li class="hl"><strong>제품코드 X 오류 · 영향 업체 3곳</strong><span class="cv-acts"><span>일괄 매칭</span><span>재요청</span><span>중복 확인</span></span></li></ul>
+<p class="sum">같은 오류는 한 번에 판단</p>
+<p class="foot">업로드할 때 미매칭 항목을 표시 → 보완 요청을 앞당김</p></div>
+</div>
+<figcaption class="cv-cap">업체와 건수는 예시입니다.</figcaption></figure>
+<div class="cv-split">
+<div class="cv-why"><h3>어떻게 확인하고 진행했나</h3><ol>
+<li><b>배경</b><span>미매칭 자료는 정산에서 빠진 뒤 금액 대조로 발견됐고, 보완된 내역은 다음 달 이후 정산으로 넘어갔습니다.</span></li>
+<li><b>무엇</b><span>오류 단위로 모아 판단하도록 하고, 업로드할 때 제품이 연결되지 않는 항목을 표시하도록 기획했습니다. 자료가 돌아오는 시점은 통제할 수 없어 이월 반영은 유지했습니다.</span></li>
+<li><b>합의</b><span>여러 업체 자료를 모아 검토·일괄 처리하는 방식을 제가 기획해 제안했고, 고객사 리뷰에서 처리 방향을 합의해 결정로그에 남겼습니다.</span></li>
+<li><b>진행</b><span>기획하고 고객사와 합의한 단계까지 진행했습니다.</span></li>
+</ol></div>
+<figure class="fig"><div class="shot" style="max-width:900px"><button type="button" class="zoom" data-full="full-sales" aria-label="매출자료 검증 화면 전체 보기"><img src="assets/evidence-2c01183bac18.png" width="900" height="446" alt="매출자료 통합 검증 화면 일부. 일괄 처리 안내, 영향 업체, 일괄 처리 동작."></button><span class="mk" data-n="1" aria-hidden="true" style="left:2.33%;top:4.71%;width:95.33%;height:11.66%"></span><span class="mk" data-n="2" aria-hidden="true" style="left:3.67%;top:27.58%;width:21.33%;height:65.47%"></span><span class="mk mk-r" data-n="3" aria-hidden="true" style="left:58.67%;top:27.58%;width:15.22%;height:65.47%"></span></div><figcaption><ol class="lg"><li><b>안내 문구</b> 여러 업체 자료의 오류를 모아 검토·처리하는 화면</li><li><b>영향 업체</b> 오류별로 영향받는 업체</li><li><b>일괄 처리</b> 일괄 매칭·제거·재요청</li></ol><span>프로토타입 일부. 화면의 건수는 시연용 예시입니다. 화면을 누르면 전체 화면이 열립니다.</span> <button type="button" class="full" data-full="full-sales">전체 화면 보기</button></figcaption></figure>
+</div>
+<div class="cv-more">
+<details><summary>오류 유형과 처리 기능</summary><p>사업자번호·매출일자 누락, 제품 매칭 실패를 유형별 건수로 표시하고 영향 업체와 오류 사유를 보여줬습니다. 일괄 매칭·자료 재요청·중복 확인으로 연결하고, 자료 보완이 필요하면 도매업체에 다시 요청하도록 했습니다.</p></details>
+<details><summary>후속 검증을 위한 제안 지표 · 미측정</summary><p>같은 오류의 업체별 반복 처리 건수, 미매칭 발견부터 보완 요청까지 걸린 시간, 다음 달 이후로 이월된 건수</p></details>
+</div>
+</div></section>
+<section class="sec" id="erp-order" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">웰던 · ERP 구축 순서 · 판단 사례 02 <span class="cv-status">합의 → 개발 진행</span></p><h2 class="cv-title">정산 자료를 마스터데이터로 분류하는 구조라서, 정산부터 만들도록 순서를 바꿨습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">먼저 만든 기능</p><p class="v"><span class="from">마스터데이터</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">정산</span></p></div>
+<div class="cv-tile"><p class="k">판단 근거</p><p class="v"><span class="from">처음 가정</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">실무 구조 확인</span></p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">처음 가정 · 마스터데이터 중심</p>
+<ul class="cv-items"><li>기존 마스터데이터를 기준으로 삼고</li><li>들어오는 EDI 자료를 분류</li></ul>
+<p class="sum">마스터데이터 화면부터 만든다</p></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new"><p class="lbl">확인한 업무 구조 · 정산 자료가 출발점</p>
+<ul class="cv-items"><li>정산을 위해 받은 자료를 분류·연결</li><li>마스터데이터와 EDI 자료를 대조</li><li>거래 내역 계산·정산</li></ul>
+<p class="sum">정산 흐름부터 구체화한다</p></div>
+</div>
+<div class="cv-order"><span>조정한 개발 우선순위</span><ol><li>1 정산 기능</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>2 마스터데이터</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>3 협력사 포털</li></ol></div>
+<figcaption class="cv-cap">정산을 먼저 만든다는 것이 마스터데이터 없이 정산한다는 뜻은 아닙니다.</figcaption></figure>
+<div class="cv-why"><h3>어떻게 확인하고 진행했나</h3><ol>
+<li><b>확인</b><span>내부 실무자·TF 담당자와 업무를 확인하며, 정산을 위해 받은 자료를 EDI 자료와 함께 정산에 쓰는 구조를 파악했습니다.</span></li>
+<li><b>무엇</b><span>마스터데이터 화면보다 정산에 필요한 자료의 분류·연결 흐름을 먼저 구체화해야 한다고 판단했습니다.</span></li>
+<li><b>합의</b><span>정산 기능을 먼저 구축하는 방안을 고객사에 제안해 정산 → 마스터데이터 → 협력사 포털 순으로 조정했고, 재직 중 정산 기능부터 개발이 진행됐습니다.</span></li>
+</ol></div>
+<div class="cv-fig"><p class="k">같은 판단을 적용한 요청 · 병의원 통합 조회</p>
+<ol class="cv-steps" aria-label="병의원 통합 조회의 요청부터 산출물까지">
+<li><span>요청</span><strong>병의원 정보를 한 번에 조회</strong><span>취급 약품·배치된 CSO로 진입 가능 여부 판단</span></li>
+<li><span>제약</span><strong>EDI·정산 기능이 먼저 필요</strong><span>연결 구조가 복잡해 바로 개발하기 어려움</span></li>
+<li class="hl"><span>판단</span><strong>개발은 미루고, 화면 검토는 먼저</strong><span>선행 조건 정리 후 프로토타입 제작</span></li>
+<li><span>산출물</span><strong>고객사와 검토한 프로토타입</strong><span>작동 방식을 확인하고 후속 개발 준비</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>자료 검증 흐름과 개발 순서의 차이</summary><p>EDI 수신 → 심평원 검증 → 마스터데이터 등록은 자료 처리 흐름입니다. 정산 기능을 먼저 구축했다는 것은 마스터데이터 없이 정산한다는 뜻이 아닙니다.</p></details>
+<details><summary>후속 검증을 위한 제안 지표 · 미측정</summary><p>마스터데이터 구축 단계에서 생긴 구조 변경·재작업 건수, 계획 대비 정산 기능 일정</p></details>
+</div>
+</div></section>
+<section class="sec" id="erp-edi" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">웰던 · EDI 증빙 대조 · 판단 사례 03 <span class="cv-status">기획·고객사 합의</span></p><h2 class="cv-title">원본과 입력값을 나란히 대조할 수 있도록, 증빙을 별도 창으로 여는 방식으로 정했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">증빙 확인 방식</p><p class="v"><span class="from">모달</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">별도 창</span></p></div>
+<div class="cv-tile"><p class="k">수량 값</p><p class="v"><span class="from">한 칸</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">수신값·확정값 분리</span></p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">재구성 도식</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">검토한 대안 · 모달</p>
+<div class="cv-win" role="img" aria-label="입력 화면 위에 작은 증빙 모달이 겹친 도식"><div><span>입력 화면</span><i></i><i></i><i></i><i></i></div><div class="modal"><span>증빙</span><i></i><i></i></div></div>
+<p class="sum">증빙이 작고, 입력값을 가린다</p></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new"><p class="lbl">선택한 방식 · 별도 창</p>
+<div class="cv-win" role="img" aria-label="입력 화면과 증빙 창이 나란히 놓인 도식"><div><span>입력 화면</span><i></i><i></i><i></i></div><div class="proof"><span>증빙 창</span><i></i><i></i><i></i></div></div>
+<p class="sum">원본과 입력값을 나란히 본다</p></div>
+</div>
+<figcaption class="cv-cap">두 방식을 비교해 고객사와 협의해 선택했습니다.</figcaption></figure>
+<div class="cv-split">
+<div class="cv-why"><h3>어떻게 확인하고 진행했나</h3><ol>
+<li><b>배경</b><span>입력 과정의 오류인지 원본 자료의 문제인지 구분하기 어려워, 원본과 대조하며 판단할 흐름이 필요했습니다.</span></li>
+<li><b>무엇</b><span>OCR로 품목·수량을 자동 입력하고, 당월 수량(수신값)과 확정수량(증빙 대조 후 확정한 값)을 나눴습니다.</span></li>
+<li><b>합의</b><span>모달과 별도 창을 비교해 고객사와 별도 창으로 정하고, 프로토타입·PRD에 반영했습니다.</span></li>
+</ol></div>
+<figure class="cv-shot"><button type="button" class="zoom" data-full="full-edi" aria-label="EDI 화면 전체 보기"><img src="assets/evidence-5f89120bf089.png" width="800" height="360" alt="EDI 품목 화면 일부. 당월 수량과 확정수량 열, 증빙 보기(새 창) 버튼. 식별정보는 가상 값." loading="lazy"></button><figcaption class="cv-cap">실제 기획 프로토타입 일부 · 화면을 누르면 전체 화면이 열립니다.</figcaption></figure>
+</div>
+<div class="cv-more">
+<details><summary>탐색 흐름과 세부 정책</summary><p>원본 증빙 이미지에서 OCR로 품목·수량을 읽어 자동 입력하고, 실무자가 대조해 보정·확정하는 흐름으로 정리했습니다. 여러 메뉴에 흩어진 EDI 작업은 거래처 → 병의원 → 품목 순으로 탐색하며 대조·보정·확정하도록 연결했습니다.</p></details>
+</div>
+</div></section>
+<details class="more-cases"><summary>보조 판단 사례 2개 더 보기<span>입력 경로별 정책 · 미확정 자료 처리</span></summary>
+<section class="sec" id="erp-input" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">웰던 · EDI 입력 경로 · 판단 사례 04 <span class="cv-status">명세 반영</span></p><h2 class="cv-title">직접 입력은 틀린 품목을 고를 수 없게, 외부 자료는 들어온 뒤 대조하도록 설계했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">직접 입력 · 수기·포털</p><p class="v"><span class="to">잘못된 입력을 예방</span></p></div>
+<div class="cv-tile"><p class="k">외부 자료 · OCR·파일 업로드</p><p class="v"><span class="to">들어온 뒤 대조</span></p></div>
+</div>
+<figure class="cv-fig">
+<p class="cv-origin">EDI 자료가 들어오는 경로</p>
+<div class="cv-cmp">
+<div class="cv-col new"><p class="lbl">직접 입력 · 수기·포털</p><p class="desc">사용자가 고를 수 있는 품목을 미리 제한할 수 있음</p>
+<ol class="cv-items"><li><strong>허용 품목 안내</strong><small>해당 거래처의 허용 품목을 먼저 표시</small></li><li><strong>계약된 품목만 선택</strong><small>마스터에 없는 제품은 검색되지 않도록 제한</small></li></ol>
+<p class="sum">예방 · 틀린 품목을 고를 수 없게</p></div>
+<div class="cv-col alt"><p class="lbl">외부 자료 · OCR·파일 업로드</p><p class="desc">외부에서 들어온 품목은 허용 여부를 대조해야 함</p>
+<ol class="cv-items"><li><strong>외부 자료 유입</strong><small>OCR·파일 업로드로 들어온 품목 확인</small></li><li><strong>허용 품목과 대조</strong><small>크로스체크로 품목의 허용 여부 검증</small></li></ol>
+<p class="sum">대조 · 들어온 뒤 허용 여부 확인</p></div>
+</div>
+<figcaption class="cv-cap">고객사 리뷰에서 합의 · 요구사항 명세에 반영</figcaption>
+</figure>
+<div class="cv-why"><h3>왜, 무엇을, 어떻게 합의했나</h3><ol>
+<li><b>왜</b><span>직접 선택하는 화면은 선택지를 미리 제한할 수 있지만, 외부 자료는 들어온 뒤에야 확인할 수 있습니다.</span></li>
+<li><b>무엇</b><span>자료 전달 경로를 포털로 모아 거래처가 직접 올리도록 하고, 실무자는 취합·입력 대신 대조·보정·확정을 맡도록 역할을 나눠 설계했습니다.</span></li>
+<li><b>합의</b><span>입력 경로별 검증 방식을 고객사 리뷰에서 합의하고 요구사항 명세에 반영했습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>거래처와 실무자의 역할 분리</summary><p>기존에는 거래처 자료가 이메일·우편·카카오톡으로 내부 실무자에게 전달됐습니다. 자료 전달 경로를 포털로 모으고, 거래처가 직접 자료를 업로드·확인하도록 설계했습니다. 내부 실무자는 전달받은 파일을 다시 취합·입력하는 대신 자료를 대조하고 보정·확정하는 역할을 맡도록 나눴습니다.</p></details>
+</div>
+</div></section>
+<section class="sec" id="erp-unverified" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">웰던 · 미확정 매출자료 · 판단 사례 05 <span class="cv-status">리뷰 확정</span></p><h2 class="cv-title">확인되지 않은 자료는 시스템이 단정하지 않도록 설계했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">미등록 약국</p><p class="v"><span class="from x">자동 확정</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">가등록 후 확인</span></p></div>
+<div class="cv-tile"><p class="k">중복 의심 행</p><p class="v"><span class="from x">자동 삭제</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">표시 후 담당자 판단</span></p></div>
+</div>
+<figure class="cv-fig">
+<p class="cv-origin">확인이 필요한 매출자료</p>
+<div class="cv-cmp">
+<div class="cv-col new"><p class="lbl">미등록 약국</p><p class="desc">신생 약국이거나, 실제 거래처인데 정보가 갱신되지 않았을 수 있음</p>
+<ol class="cv-items"><li><strong>1 가등록으로 보관</strong><small>명칭·사업자번호·주소로 가등록</small></li><li><strong>2 확인 전 사용 보류</strong><small>임시저장 상태로 두고 거래 처리 화면에 노출하지 않음</small></li><li class="hl"><strong>3 사람이 확인 후 확정</strong><small>검증되지 않은 정보가 그대로 쓰이지 않게</small></li></ol></div>
+<div class="cv-col new"><p class="lbl">중복 의심 행</p><p class="desc">날짜·제품·약국·수량이 같아도 실제 중복이라고 단정할 수 없음</p>
+<ol class="cv-items"><li><strong>1 중복 의심 표시</strong><small>담당자가 확인할 대상으로 표시</small></li><li class="hl"><strong>2 담당자가 확인</strong><small>자동으로 지우지 않고 실제 중복 여부 판단</small></li></ol></div>
+</div>
+<figcaption class="cv-cap">고객사 리뷰 · 디자인 리뷰 · 가등록 필수값 확정</figcaption>
+</figure>
+<div class="cv-why"><h3>왜, 무엇을, 무엇이 남았나</h3><ol>
+<li><b>왜</b><span>실제 거래 중인 약국도 정보가 갱신되지 않아 미등록으로 나타날 수 있었습니다.</span></li>
+<li><b>무엇</b><span>마스터에 없거나 값이 같다는 이유만으로 확정·삭제하지 않고, 미등록 정보와 중복 의심 자료를 나눠 확인하도록 설계했습니다.</span></li>
+<li><b>남은 일</b><span>중복 의심 표시 기준과 변경 로그·수정 사유 입력 방식은 후속 논의 사항으로 남았습니다.</span></li>
+</ol></div>
+</div></section></details></section><section class="sec stage-panel" id="erp-evidence" tabindex="-1"><p class="stage-label"><span>04</span>산출물과 개발 전달</p><h2>화면에서 내린 판단을 명세와 결정로그에 연결</h2><!-- reconstructed-artifact:start --><details class="artifact" id="artifact-weldone">
+ <summary><span>재구성 산출물 보기</span><strong>웰던 · 증빙 대조 화면과 결정로그</strong><small>화면 대안 → 합의한 방향 → 명세로 연결</small></summary>
+ <div class="artifact-body">
+  <p class="artifact-notice"><b>재구성 자료</b></p>
+  <p class="artifact-role"><b>본인 역할</b> 대조 화면 대안 검토·기획, 고객사 합의, PRD·프로토타입 개발 전달. 제품 디자인과 개발 구현은 협업 담당자가 수행했습니다.</p>
+  <h3>입력 작업은 유지하고, 증빙은 넓게 대조</h3>
+  <figure class="artifact-figure">
+   <div class="artifact-pair">
+    <div class="artifact-window"><div class="artifact-window-title">입력 화면 · 재구성</div><div class="artifact-window-content"><h4>EDI 품목 입력</h4><div class="artifact-gridrow"><span>품목</span><span>수량</span></div><div class="artifact-gridrow"><b>가상 품목 A</b><b>120</b></div><div class="artifact-gridrow"><span>가상 품목 B</span><span>80</span></div><span class="artifact-label">증빙 대조 → 별도 창</span><p>OCR로 읽어온 품목·수량을 원본과 비교하는 입력 작업</p></div></div>
+    <div class="artifact-window"><div class="artifact-window-title">별도 증빙 창 · 재구성</div><div class="artifact-window-content"><div class="artifact-paper"><h4>가상 원본 증빙</h4><p>품목 A · 수량 120</p><p>품목 B · 수량 80</p><hr></div><p>작은 모달 대신 넓은 영역에서 원본 내용을 확인</p></div></div>
+   </div>
+  </figure>
+  <h3>결정로그로 정리하면</h3>
+  <dl class="artifact-record"><div><dt>판단할 문제</dt><dd>입력값과 원본 증빙을 비교해야 하는데, 모달에서는 대조 영역이 작고 확인이 어려웠습니다.</dd></div><div><dt>검토한 대안</dt><dd>화면 안의 모달로 확인 / 증빙을 별도 창으로 열어 확인</dd></div><div><dt>합의한 방향</dt><dd>고객사와 협의해 별도 창 방식을 선택했습니다.</dd></div><div><dt>명세로 연결</dt><dd>원본 이미지의 품목·수량을 OCR로 읽어 자동 입력하는 흐름과, 원본을 대조하는 화면 구성을 기획했습니다.</dd></div></dl>
+  
+ </div>
+</details>
+<!-- reconstructed-artifact:end --><div class="txt"><p>회의 약 20회분의 결정을 메뉴별 결정로그로 재정리해 PRD 기준으로 삼았고, 퇴사 후에도 팀이 이전 결정을 찾아보는 데 쓰고 있습니다.</p><p>EDI는 수신값과 확정값의 의미를 PRD에, 매출자료는 업체를 분리하지 않고 오류를 모아 검증하는 방향을 결정로그에 남겼습니다. 아래는 앞의 화면 흐름과 연결되는 근거를 재구성한 것입니다.</p></div><div class="docs"><blockquote><b>결정로그</b><p>“업체별로 나누지 않고 일괄 업로드한 뒤 검증 · 오류는 유형별 건수로 표시 · 중복은 의심으로만 표시”</p><small>도매 매출 관리 결정 · 원문을 재구성</small></blockquote><blockquote><b>EDI PRD</b><p>당월수량은 수신한 값, 확정수량은 증빙 대조 후 확정한 값으로 구분했습니다. SCR-EDI-001로 화면 기능을 정리했습니다.</p><small>확인한 문서는 초안 상태입니다.</small></blockquote></div><div class="txt"><h3>화면 동작과 실제 연동은 나눠 확인</h3><p>프로토타입에서는 등록·수정·권한·입력값의 정상 동작 조건을 정했습니다. AI가 브라우저를 조작해 입력·클릭과 결과를 확인하는 방식과 제가 직접 눌러보는 방식을 함께 사용하고, 실패한 부분은 수정 후 다시 확인했습니다.</p><p>국세청 API를 직접 호출해 사업자 상태와 응답 데이터를 확인하고, 개발자의 테스트 결과를 함께 검토했습니다.</p><h3>외부 조회 데이터를 등록 흐름과 상태 정책으로 연결</h3><p>병의원·약국 등록에서 <strong class="reading-point">외부 조회값을 자동 입력하는 경로와 조회 결과가 없을 때 직접 입력하는 경로를 나눴습니다.</strong> <strong class="reading-point">외부의 개폐업 상태는 ERP 내부의 활성·비활성 상태와 구분했습니다.</strong></p><ul><li><strong>조회값이 있는 경우</strong> — 외부 조회값을 등록 화면에 자동 입력</li><li><strong>조회 결과가 없는 경우</strong> — 수기 입력 경로 제공</li><li><strong>폐업으로 확인된 경우</strong> — 상태를 안내하는 창을 표시하고 신규 등록을 제한</li><li><strong>상태 표시</strong> — 개폐업 상태와 내부 활성·비활성 상태를 별도로 관리</li></ul></div><details class="artifact-wide"><summary>산출물 샘플: 화면 단위 PRD 구조</summary><p class="small">재구성 샘플 · 개별 정책의 근거는 위 PRD·결정로그 발췌를 확인하세요.</p><p>개요 → 범위 → 요구사항 → 화면 목적 → 개념 정의 → 시나리오 → 정책 → 데이터·연동 → 필드 상세 → 미결</p><p>화면 식별자(SCR-ID)를 기준으로 요구사항·정책·필드·미결 사항을 묶고, 고객 요청과 기획자의 해석·제안을 출처로 구분하는 구성입니다.</p></details><details class="artifact-wide"><summary>추가 프로토타입: 약국 관리</summary><p>기존 약국 관리 프로토타입의 조회·행 선택·등록·상세·수정 화면 전환을 확인할 수 있습니다. EDI·매출 검증과는 별도 화면 사례입니다.</p><p class="small">화면 시연용 데모 · 더미 데이터 · 실제 저장·외부 연동 없음</p><p><a class="lnk" href="proto-demo.html">약국 관리 데모 열기</a></p></details></section><section class="result" id="erp-review" tabindex="-1"><p class="stage-label"><span>05</span>검토 결과</p><h2>고객사 검토를 거쳐 개발 기준으로 전달했습니다.</h2><p>현업 리뷰에서 EDI 수신·입력·보정·확정을 한 화면에서 처리하는 구성에 긍정적인 반응을 받았고, 추가 피드백을 화면과 명세에 반영했습니다. 예를 들어 전월·전전월 수량과 금액을 네 개 열로 나란히 비교하던 구성은, 고객사 의견에 따라 최근 3개월 안에 입력된 품목인지와 평균 대비 이탈 정도를 보여 주는 이상값 표시로 바꿨습니다.</p><p>퇴사 후에도 작성한 PRD를 기준으로 개발이 이어지고 있습니다.</p><p class="src">프로젝트 상태: 기획·구축. 출시 후 사용 효과를 측정한 사례는 아닙니다.</p></section><p class="next"><button type="button" data-go="ai">다음: 같은 재직 기간의 AI 업무 개선</button></p></section><section id="ai" role="tabpanel" aria-labelledby="t-ai" class="wrap detail-page" hidden>
+<header class="phead"><p class="backline"><a href="#home" data-go="home">프로젝트 탐색으로</a></p><p class="meta">웰던프로덕트 · PM · 2026.04–2026.06</p><h1>AI 결과를 근거로 검증하고,<br> 팀이 함께 쓰게 했습니다.</h1><p class="intro">산출물 검수 기준을 먼저 세우고, 회의 기록에서 PRD·프로토타입으로 이어지는 작업과 프로젝트 지식 조회에 AI를 적용했습니다.</p></header><section class="sec" id="ai-quality" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">01 품질 통제</p><h2 class="cv-title">AI가 요구에 없던 '자동 승인'을 넣어서, 원문과 대조하는 검수 절차를 만들었습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">AI 산출물 처리</p><p class="v"><span class="from">그대로 확정</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">원문 대조 후 확정</span></p></div>
+<div class="cv-tile"><p class="k">스킬 지침에 반영</p><p class="v">5대 검증 기준</p></div>
+</div>
+<figure class="cv-fig">
+<p class="k">실제로 잡아낸 사례</p>
+<ol class="cv-steps">
+<li class="old"><span>발견</span><strong>명세 초안에 '자동 승인' 옵션</strong><span>원래 요구에 없던 기능</span></li>
+<li><span>대조</span><strong>회의록·요구 목록과 비교</strong><span>근거가 없음을 확인</span></li>
+<li><span>조치</span><strong>명세에서 삭제</strong><span>확정 전에 걸러냄</span></li>
+<li class="hl"><span>규칙화</span><strong>스킬 지침 수정</strong><span>다음 검수에서 확인하도록</span></li>
+</ol>
+<p class="k">그 결과 만든 5대 검증 기준</p>
+<div class="cv-crit">
+<div><b>1</b><strong>근거 검증</strong><span>요구에 없는 기능·정책이 추가됐는지</span></div>
+<div><b>2</b><strong>중복 제거</strong><span>같은 요구의 반복·상충 정리</span></div>
+<div><b>3</b><strong>자동/수동 경계</strong><span>시스템 처리와 사용자 판단 범위</span></div>
+<div><b>4</b><strong>실제 업무 동선</strong><span>현업 작업 순서와 화면 흐름 대조</span></div>
+<div><b>5</b><strong>데이터 정합</strong><span>문서·화면 간 필드·상태·규칙</span></div>
+</div>
+<figcaption class="cv-cap">1번 기준이 위 사례에서 나왔습니다.</figcaption>
+</figure>
+<div class="cv-why"><h3>어떻게 확인하고 진행했나</h3><ol>
+<li><b>확인</b><span>회의록과 요구 목록을 대조해 '자동 승인'의 근거가 없다는 것을 확인하고 명세에서 지웠습니다.</span></li>
+<li><b>무엇</b><span>원문 요구사항과 대조하는 절차와 5대 검증 기준을 스킬 지침에 넣었습니다.</span></li>
+<li><b>운영</b><span>초기에는 AI 검수 뒤 제가 다시 확인하며 지침을 보완했습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>실제 검수 지침 발췌</summary><blockquote><p>“출처가 표기된 내용이 실제 소스 문서의 해당 부분과 일치하는가?”</p><small>spec-review · 2026.05.19 · 원문 대조 절차를 명시한 실제 지침</small></blockquote></details>
+</div>
+</div></section><section class="sec" id="ai-workflow" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">02 기획 생산</p><h2 class="cv-title">의도와 다른 명세가 나오지 않도록, AI가 참고할 근거부터 정리했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">작업 순서</p><p class="v"><span class="from">바로 작성</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">근거 먼저 정리</span></p></div>
+<div class="cv-tile"><p class="k">반복 업무 자동화 · PM 챕터에 공유</p><p class="v">Claude 스킬·워크플로 10종</p><p class="cv-note">대표 포함 PM 4명 실사용 · 퇴사 전 사내 AX 담당자에게 인수인계</p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<div class="cv-col old"><p class="lbl">초기 · 요구에서 바로 명세 작성</p>
+<ol class="cv-chain"><li>요구</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>AI 명세 작성</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li class="end">의도와 다른 화면 동작</li></ol>
+<p class="desc">예: 모달로 구상한 입력 방식이 새 페이지로 표현됨</p></div>
+<div class="cv-col new"><p class="lbl">바꾼 순서 · AI가 참고할 근거부터</p>
+<ol class="cv-chain"><li>녹음·녹취록·메모</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>회의록</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>PRD</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li>프로토타입</li><li class="sep" aria-hidden="true"><svg class="cv-ar sm" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></li><li class="end">직접 검토·수정</li></ol></div>
+<div class="cv-cmp">
+<div class="cv-col alt" style="border-color:var(--line)"><p class="lbl" style="color:var(--muted)">AI가 만든 것</p><p>회의록 · PRD 초안 · 프로토타입</p></div>
+<div class="cv-col alt"><p class="lbl">제가 판단한 것</p><p>모달·아코디언·조회 흐름이 기획 의도에 맞는지 판단해 수정</p></div>
+</div>
+</figure>
+<div class="cv-why"><h3>왜, 무엇을, 어떻게 이어갔나</h3><ol>
+<li><b>왜</b><span>초기 AI 명세에는 의도한 화면 동작과 다른 내용이 들어가, 결과물을 직접 수정해야 했습니다.</span></li>
+<li><b>무엇</b><span>AI가 참고할 회의 내용과 요구사항을 먼저 정리하고, PRD를 만든 뒤 프로토타입과 상세 명세의 버전을 높였습니다.</span></li>
+<li><b>협업</b><span>PRD·명세서·프로토타입을 공유한 뒤 디자이너·개발자와 기획을 보완했습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>사용 도구와 Claude 스킬·워크플로 구성</summary><p>STT 녹취록·녹음·메모를 구글드라이브에 모으고 Claude로 회의 내용을 정리해 노션 회의록을 작성했습니다. 프로덕트 디자이너는 Figma에서 화면을 구체화했습니다. 회의 준비·정리, 명세 작성·검수, QA·리스크 점검 등 Claude 스킬·에이전트 워크플로 10종을 구성하고 PM 챕터에 공유했습니다.</p></details>
+</div>
+</div></section><section class="sec" id="ai-ssot" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">03 팀 활용</p><h2 class="cv-title">팀원들이 같은 확정사항을 보도록, 출처와 함께 답하는 슬랙 봇을 만들었습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">슬랙 Q&amp;A 봇 사용</p><p class="v big">우리 팀 + 옆 팀</p><p class="cv-note">팀원들이 사용 · 옆 팀의 요청으로 전용 봇을 따로 구성</p></div>
+<div class="cv-tile"><p class="k">자동화한 반복 문서·기획 업무 · 본인 시간</p><p class="v big">약 40% 감소</p><p class="cv-note">약 한 달간 도입 전후 직접 비교 · AI 결과 검수·수정 시간 포함</p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">문제</p><ul class="cv-items"><li>팀원마다 알고 있는 정보와 확정사항이 다름</li><li>노션 자료가 여러 곳에 흩어져 찾는 데 시간이 걸림</li></ul></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new wide"><p class="lbl">구성</p>
+<ol class="cv-steps">
+<li><span>참조 자료</span><strong>선정한 문서만</strong><span>구글드라이브·노션의 녹취록·회의록·PRD·명세서</span></li>
+<li><span>기준</span><strong>최신·확정 우선</strong><span>최신 날짜 · 확정된 결정로그 · PRD</span></li>
+<li class="hl"><span>슬랙 Q&amp;A 봇</span><strong>근거로 답하고 출처 표시</strong><span>원문을 바로 확인</span></li>
+</ol>
+<ul class="cv-items"><li><strong>근거가 없을 때</strong><small>추측하지 않고 확인 불가로 안내 → 필요한 사항은 제가 정리해 고객사에 문의</small></li></ul></div>
+</div>
+<figcaption class="cv-cap">오픈소스 Hermes 에이전트로 구축</figcaption></figure>
+<div class="cv-why"><h3>무엇을 맡았고, 어떻게 쓰였나</h3><ol>
+<li><b>역할</b><span>참조 자료 선정과 답변 기준 설정, 고객사 추가 확인은 제가 맡았습니다.</span></li>
+<li><b>활용</b><span>사업자 중복 확인 버튼처럼 화면·정책의 세부사항을 묻는 데 쓰였습니다.</span></li>
+<li><b>관리</b><span>문서 간 내용이 어긋나지 않도록 AI 스킬로 일관성을 점검했습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>40%의 측정 범위</summary><p>회의록 정리·메뉴별 PRD 작성·프로토타입 재정립 등 반복 문서·기획 업무를 AI로 자동화하고, 약 한 달간 도입 전후 그 작업에 든 본인 시간을 작업별로 기록해 비교했습니다. AI 결과의 검수·수정 시간을 포함한 수치입니다. 측정 범위는 자동화한 본인의 반복 문서·기획 업무이며, 전체 근무시간이나 봇 단독 효과는 측정하지 않았습니다.</p></details>
+</div>
+</div></section><p class="next"><button type="button" data-go="exp">다음: 공공·운영 경험</button></p></section><section id="exp" role="tabpanel" aria-labelledby="t-exp" class="wrap detail-page" hidden>
+<header class="phead"><p class="backline"><a href="#home" data-go="home">프로젝트 탐색으로</a></p><p class="meta">한국정보기술단 · 쿠팡 · 2022.12–2025.09</p><h1>사용자가 확인하고,<br> 판단하고, 수정하는 흐름을 다뤘습니다.</h1><p class="intro">공공 시스템에서는 화면·입력 검증 개선과 요구사항 추적을, 광고 운영에서는 AI 검수 오류 분석과 검수 기준 개선안 설계를 수행했습니다.</p><p class="key"><span class="kb">기존 흐름</span><span class="ka">기획한 흐름</span></p></header>
+<section class="sec" id="exp-k-water" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">한국정보기술단 · 수자원공사 스마트 정수장 · 2022.12–2023.12 · PM <span class="cv-status">UT·현장 반영</span></p><h2 class="cv-title">구역 상태를 전체 현황에서 바로 보게 했습니다.</h2><p class="cv-chips"><span>사업 범위 39개소 · 전국 7개 유역</span><span>요구사항 72건 이행 추적</span></p></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">구역 상태 확인</p><p class="v"><span class="from">여러 단계 진입</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">전체 현황에서 선택</span></p></div>
+<div class="cv-tile"><p class="k">검증 방식</p><p class="v"><span class="from">개발 화면</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">UT·현장 확인</span></p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">재구성 와이어프레임</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">기존 · 여러 화면을 거쳐</p><ol class="cv-items"><li>화면 1</li><li>화면 2</li><li>…</li><li class="hl">구역별 상태 확인</li></ol></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new wide"><p class="lbl">설계 · 전체 현황 → 구역 선택 → 상세</p>
+<div class="cv-cmp">
+<div class="cv-input" style="flex:1 1 220px;min-width:0"><p class="lbl">전체 현황</p><div class="cv-zones"><span>약품·소독 제어</span><span>송수펌프 제어</span><span>구역</span><span>구역</span></div></div>
+<div class="cv-input" style="flex:1 1 220px;min-width:0;box-shadow:inset 0 0 0 2px var(--new-ink)"><p class="lbl">선택한 구역 상세</p><dl class="cv-dl"><div><dt>경보 종류</dt><dd>약품 주입 관련</dd></div><div><dt>심각도</dt><dd>등급 표시</dd></div><div><dt>처리 상태</dt><dd>진행 상태 표시</dd></div></dl></div>
+</div>
+<p class="sum">색상만이 아니라 종류·심각도·처리 상태를 함께</p></div>
+</div>
+<figcaption class="cv-cap">정보 배치와 이동 관계만 표현했습니다.</figcaption></figure>
+<div class="cv-split">
+<div class="cv-why"><h3>왜, 무엇을, 어떻게 확인했나</h3><ol>
+<li><b>왜</b><span>구역별 진행 상황과 이상 여부를 보려면 여러 단계로 진입해야 했습니다.</span></li>
+<li><b>무엇</b><span>전체 상황을 먼저 파악하고 필요한 구역의 상세로 이동하도록 정보 배치와 메뉴 구조를 재구성했습니다.</span></li>
+<li><b>확인</b><span>UT로 화면 흐름을 점검하고, 한강유역 정수장을 방문해 운영자가 업무 중 화면을 쓰는 모습을 확인한 뒤 피드백을 반영했습니다.</span></li>
+</ol></div>
+<div class="cv-stat"><p class="k">프로젝트 전체 성과 · 결과보고서 기준</p><strong>오류 경보 건수 40% 감소</strong><p>이 화면의 효과가 아닌 프로젝트 전체 개선 결과입니다. 본인은 경보 기준·표시 기획과 경보 검증을 맡았고, 대응 가이드 보완(메인 PM과 함께)·품질점검·요구사항 관리에 참여했습니다.</p></div>
+</div>
+<div class="cv-more">
+<details><summary>경보 검증과 현장 대응 가이드</summary><p>현장 계측값·운영 기록·경보 로그를 비교하고 현장 운영자와 함께 확인해, 버그·AI 오작동으로 발생한 경보와 실제 조치가 필요한 경보를 구분했습니다. 약품 주입 관련 경보 등의 대응 가이드는 메인 PM과 함께 작성하고, 현장 운영자와 검토하며 조정했습니다.</p></details>
+<details><summary>프로젝트 배경과 담당 역할</summary><p>한국수자원공사 AI 기반 스마트 정수장 확대 구축 사업이었습니다. 정수장 현장 운영자와 중앙 관제 담당자가 운영 상황을 확인하는 화면을 기획하고, PPT·와이어프레임으로 구체화한 뒤 개발 화면과 실제 사용 흐름을 점검했습니다.</p></details>
+<details class="artifact" id="artifact-water">
+ <summary><span>재구성 산출물 보기</span><strong>수자원공사 · 현황·상세 와이어프레임과 점검 관점</strong><small>전체 상황 파악 → 구역 선택 → 상세 확인</small></summary>
+ <div class="artifact-body">
+  <p class="artifact-notice"><b>재구성 자료</b></p>
+  <p class="artifact-role"><b>본인 역할</b> 현황·상세 화면과 경보 표시 기획, UT·현장 적용 확인, 운영자 피드백 반영. 대응 가이드는 메인 PM·현장 운영자와 함께 보완했습니다.</p>
+  <h3>필요한 구역으로 바로 들어가는 구조</h3>
+  <figure class="artifact-figure"><div class="artifact-pair">
+   <div class="artifact-window"><div class="artifact-window-title">전체 현황 · 재구성</div><div class="artifact-window-content"><h4>구역별 상태</h4><div class="artifact-zone"><b>약품·소독 제어 구역</b><span class="artifact-label">상세 확인 대상 · 예시</span></div><div class="artifact-zone"><b>송수펌프 제어 구역</b><span>상태 표시 영역</span></div><p>전체 현황에서 필요한 구역 선택 →</p></div></div>
+   <div class="artifact-window"><div class="artifact-window-title">선택한 구역의 상세 · 재구성</div><div class="artifact-window-content"><h4>약품·소독 제어 구역</h4><dl class="artifact-mini"><dt>경보 종류</dt><dd>약품 주입 관련 · 예시</dd><dt>심각도</dt><dd>등급 표시 영역</dd><dt>처리 상태</dt><dd>진행 상태 표시 영역</dd></dl><p>색상뿐 아니라 종류·심각도·처리 상태를 함께 확인</p></div></div>
+  </div><figcaption>재구성 와이어프레임 · 정보 배치와 이동 관계</figcaption></figure>
+  <h3>현장에서 무엇을 확인했나</h3>
+  <dl class="artifact-record"><div><dt>탐색 흐름</dt><dd>전체 현황에서 필요한 구역을 찾고 상세 정보까지 이동하는 단계가 불편하지 않은지 확인했습니다.</dd></div><div><dt>표시 가독성</dt><dd>운영 중 글자 크기와 알림의 위치·크기가 읽고 확인하기 적절한지 살펴봤습니다.</dd></div><div><dt>경보의 근거</dt><dd>현장 계측값·운영 기록·경보 로그를 운영자와 대조해 오류 경보와 조치가 필요한 경보를 구분했습니다.</dd></div><div><dt>수정으로 연결</dt><dd>약품·소독 제어와 송수펌프 제어 관련 화면의 현장 적용을 확인하고, 운영자 피드백을 반영해 수정했습니다.</dd></div></dl>
+  <p class="artifact-footnote">40%는 이 화면의 효과가 아니라 결과보고서 기준 프로젝트 전체 개선 결과입니다.</p>
+ </div>
+</details>
+</div>
+</div></section><section class="sec" id="exp-finance" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">한국정보기술단 · 기획재정부 국가결산보고서 시스템 · 2024.01–2024.11 · PM <span class="cv-status">개발 반영·재검증</span></p><h2 class="cv-title">입력 오류를 저장한 뒤에야 알 수 있어서, 입력하는 중에 확인하도록 바꿨습니다.</h2><p class="cv-role">본인: 개선안 기획·담당자 합의·작업 순서 제안·재검증 · 구현: 개발팀</p></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">오류 안내 시점</p><p class="v"><span class="from">저장·계산 후</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">입력 중</span></p></div>
+<div class="cv-tile"><p class="k">작업 순서</p><p class="v"><span class="from">화면 먼저</span><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg><span class="to">계산 로직·백엔드 먼저</span></p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<div class="cv-cmp">
+<div class="cv-col old"><p class="lbl">기존 · 입력 → 저장·계산 → 오류 확인</p>
+<div class="cv-input"><label for="fin-old">금액 항목 · 가상 예시</label><input id="fin-old" type="text" value="12A" readonly tabindex="-1"><span class="msg">입력 중에는 안내가 없음</span></div>
+<p class="sum">저장하거나 계산한 뒤에야 오류를 알고 되돌아간다</p></div>
+<div class="cv-mid"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-col new"><p class="lbl">개선 · 입력 → 오류·종류 확인 → 수정</p>
+<div class="cv-input"><label for="fin-new">금액 항목 · 가상 예시</label><input id="fin-new" class="err" type="text" value="12A" readonly tabindex="-1" aria-describedby="fin-new-msg"><span id="fin-new-msg" class="msg err">입력 형식 오류 · 숫자 입력을 확인해 주세요.</span></div>
+<p class="sum">입력하는 중에 오류와 그 종류를 안다</p></div>
+</div>
+<p class="k">함께 조정한 작업 순서</p>
+<ol class="cv-steps">
+<li class="hl"><span>1 앞당김</span><strong>계산 로직 개선·백엔드 개편</strong><span>제안 · 계획 반영 · 재직 중 완료</span></li>
+<li><span>2 후속</span><strong>반복 작업·일부 화면 수정</strong><span>후속 작업으로 조정</span></li>
+</ol>
+<figcaption class="cv-cap">입력값은 가상 예시입니다.</figcaption></figure>
+<div class="cv-why"><h3>어떻게 확인하고 진행했나</h3><ol>
+<li><b>발견</b><span>각 부처 결산 담당자가 참여한 UT에서, 입력값의 오류를 저장하거나 계산한 뒤에야 확인하는 흐름을 확인했습니다.</span></li>
+<li><b>무엇</b><span>반복 오류 사례를 검토해 검증 시점과 안내 방식의 개선안을 만들고, 기획재정부 담당자와 합의해 개발팀에 전달했습니다.</span></li>
+<li><b>확인</b><span>입력 중 오류 확인·종류 안내 기능이 개발 화면에 반영돼 동작하는 것을 재검증했습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>작업 순서를 바꾼 이유</summary><p>개발 결과를 검증하던 중, 개별 화면을 먼저 수정하면 후속 단계의 계산 로직 개선과 백엔드 개편에 따라 같은 화면을 다시 손봐야 할 위험이 있다고 판단했습니다. 후속 단계에 배정된 기간도 더 짧았습니다. 계산 로직 개선과 백엔드 개편을 앞당기도록 제안했고, 제안은 작업 계획에 반영됐습니다.</p></details>
+<details><summary>UT·재검증 방식</summary><p>반복 오류 사례 검토 → 개선안 합의 → 개발팀 전달 → 수정 화면 재검증 순으로 진행했습니다. UT에서는 기존 검증 항목에 직접 만든 항목을 더해 확인했고, 발견한 오류·버그는 개발자에게 전달한 뒤 같은 항목을 다시 확인했습니다. RFP 요구사항과 화면·산출물은 RTM으로 연결해 추적했습니다.</p></details>
+<details class="artifact" id="artifact-finance">
+ <summary><span>재구성 산출물 보기</span><strong>기획재정부 · 오류 안내 설계와 UT·재검증 관점</strong><small>오류 발견 시점 → 안내 → 수정 결과 확인</small></summary>
+ <div class="artifact-body">
+  <p class="artifact-notice"><b>재구성 자료</b></p>
+  <p class="artifact-role"><b>본인 역할</b> UT 운영, 개선안 기획·담당자 합의·개발 전달, 수정 결과 재검증, 선행 작업 제안. 계산 로직·백엔드 구현은 개발팀이 수행했습니다.</p>
+  <h3>저장 후 알던 오류를 입력 중에 확인</h3>
+  <figure class="artifact-figure"><div class="artifact-pair">
+   <div class="artifact-window"><div class="artifact-window-title">기존 흐름 · 설명 도식</div><div class="artifact-window-content"><h4>입력 → 저장·계산 → 오류 확인</h4><div class="artifact-field"><span>금액 항목 · 가상 예시</span><b>12A</b></div><p>저장하거나 계산한 뒤에 오류를 확인하고 입력값으로 돌아가는 흐름</p></div></div>
+   <div class="artifact-window"><div class="artifact-window-title">개선 흐름 · 설명 도식</div><div class="artifact-window-content"><h4>입력 → 오류·종류 확인 → 수정</h4><div class="artifact-field"><span>금액 항목 · 가상 예시</span><b>12A</b></div><p class="artifact-error">입력 형식 오류 · 숫자 입력을 확인해 주세요.</p><p>입력 중 오류와 종류를 확인하는 안내 방식</p></div></div>
+  </div></figure>
+  <h3>UT·재검증 문서로 정리하면</h3>
+  <dl class="artifact-record"><div><dt>확인할 동작</dt><dd>입력 중 오류를 확인할 수 있는가? 어떤 종류의 오류인지 안내되는가?</dd></div><div><dt>업무 진행</dt><dd>반복 오류 사례 검토 → 개선안 합의 → 개발팀 전달 → 수정 화면 재검증</dd></div><div><dt>문제 발견 시</dt><dd>발견한 오류·버그를 개발자에게 전달하고, 수정 후 같은 항목을 다시 확인했습니다.</dd></div><div><dt>확인한 결과</dt><dd>입력 중 오류 확인·종류 안내 기능이 개발 화면에 반영돼 동작하는 것을 확인했습니다.</dd></div></dl>
+  <h3>작업 순서도 함께 조정</h3>
+  <div class="artifact-sequence"><div><b>계산 로직 개선·백엔드 개편</b><span>앞당길 것을 제안 · 계획 반영 · 재직 중 완료</span></div><span aria-hidden="true">↓</span><div><b>반복 작업·일부 화면 수정</b><span>후속 작업으로 조정</span></div></div>
+  <p>개별 화면을 먼저 수정하면 후속 개편에 따라 다시 수정해야 할 위험이 있다고 판단했습니다.</p>
+  
+ </div>
+</details>
+</div>
+</div></section><section class="sec" id="exp-coupang" tabindex="-1"><div class="cv">
+<header class="cv-head"><p class="cv-eyebrow">쿠팡 · Ads Operation · 2025.06–2025.09 · 계약직 <span class="cv-status">가이드 반영·실제 적용</span></p><h2 class="cv-title">운영자 판단이 갈리지 않도록, AI 판정을 따를 사례와 다시 확인할 사례의 기준을 정리해 제안했습니다.</h2></header>
+<div class="cv-tiles">
+<div class="cv-tile"><p class="k">판매자 광고 검수 규모 · 운영자 1인당</p><p class="v big">하루 500~1,000건</p></div>
+<div class="cv-tile"><p class="k">개선안 반영</p><p class="v">팀장급 회의를 거쳐 운영자 가이드에 반영됨</p></div>
+</div>
+<figure class="cv-fig"><span class="cv-badge">설명 도식</span>
+<ol class="cv-steps"><li class="old"><span>문제</span><strong>AI 오탐·미탐, 운영자 판단 갈림</strong></li><li><span>분석</span><strong>갈리는 사례를 유형·빈도로 분석</strong></li></ol>
+<div class="cv-down"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<div class="cv-cmp">
+<div class="cv-col alt"><p class="lbl">기준 A</p><p class="sum" style="font-size:22px;color:var(--ink)">AI 판정을 그대로 따를 사례</p></div>
+<div class="cv-col new"><p class="lbl">기준 B</p><p class="sum" style="font-size:22px;color:var(--ink)">운영자가 다시 확인할 사례</p></div>
+</div>
+<div class="cv-down"><svg class="cv-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></div>
+<ol class="cv-steps"><li><span>제안</span><strong>검수 규칙·가이드 문구 작성</strong></li><li><span>검토</span><strong>팀장 검토 · 팀장급 회의</strong></li><li class="hl"><span>반영</span><strong>운영자 검수 가이드 · 실제 검수에 적용</strong></li></ol>
+<figcaption class="cv-cap">담당 역할: 오류 사례 분석과 검수 규칙·가이드 개선안 작성</figcaption></figure>
+<div class="cv-why"><h3>어떻게 분석하고 반영됐나</h3><ol>
+<li><b>분석</b><span>AI 오탐·미탐과 운영자 판단이 갈리는 사례를 유형·빈도로 분석했습니다.</span></li>
+<li><b>무엇</b><span>판단에 필요한 검수 규칙과 가이드 문구를 개선안으로 작성했습니다.</span></li>
+<li><b>반영</b><span>팀장 검토와 팀장급 회의를 거쳐 운영자 검수 가이드에 반영됐고, 저를 포함한 운영자들이 실제 검수에 적용했습니다.</span></li>
+<li><b>전후 비교</b><span>팀 대시보드에서 가이드 적용 전후 각 1주를 비교했을 때, 팀 주간 불일치 검토 대상은 4,000건에서 2,200건으로 줄었습니다.</span></li>
+</ol></div>
+<div class="cv-more">
+<details><summary>결과 점검 방식</summary><p>팀 보고서·대시보드에서 같은 이미지에 대한 운영자 판단 불일치 비율과 재검수에서 판정이 바뀐 건수를 확인하며 검수 결과를 점검했습니다. 시스템 처리 방식에 대한 개선 의견도 정리해 전달했습니다.</p></details>
+</div>
+</div></section><p class="next"><button type="button" data-go="about">다음: 소개</button></p></section><section id="about" role="tabpanel" aria-labelledby="t-about" class="wrap detail-page" hidden>
+<header class="phead"><p class="backline"><a href="#home" data-go="home">프로젝트 탐색으로</a></p><p class="meta">조명호 · 서비스 기획 PM</p><h1>사용자의 업무를 이해하고,<br> 화면과 정책으로 풀어갑니다.</h1><p class="intro">공공 시스템의 화면·검증 흐름 개선, 광고 AI 검수 기준 개선, B2B ERP 단독 기획을 경험했습니다.</p></header>
+<section class="sec"><h2>일하는 방식</h2><div class="split"><article><h3>실제 작업에서 문제를 찾습니다</h3><p><strong class="reading-point">사용자가 무엇을 확인하고 어디서 다시 수정하는지</strong> 살펴본 뒤 화면과 처리 순서를 기획합니다.</p></article><article><h3>다시 손볼 일을 줄이도록 순서를 정합니다</h3><p>정해진 일정뿐 아니라 <strong class="reading-point">작업 사이의 관계를 살펴봅니다.</strong> 기재부에서는 후속 개편으로 화면을 다시 수정할 위험을 보고 계산 로직·백엔드 작업을 앞당기도록 제안했고, ERP에서는 실무자·TF와 자료의 분류·연결 구조를 확인하고 구축 순서를 조정했습니다.</p><p class="links"><button type="button" data-go="exp-finance">기재부 작업 순서 조정</button><button type="button" data-go="erp-order">ERP 구축 순서 조정</button></p></article></div></section><section class="sec"><h2>경력</h2><ul class="career"><li><b>웰던프로덕트 · PM</b><span>2026.04–2026.06 · ERP 기획 및 AI 기획 업무 개선</span></li><li><b>쿠팡 · Ads Operation</b><span>2025.06–2025.09 · AI 검수 오류 분석·검수 기준 개선</span></li><li><b>한국정보기술단 · PM</b><span>수자원공사 스마트 정수장 및 기획재정부 결산시스템 프로젝트</span></li></ul><details><summary>이 포트폴리오를 만든 방식</summary><p>AI는 구조·레이아웃·문장·코드 초안을 만들고 반복 수정을 수행했습니다. 저는 보여줄 경험과 자료를 선택하고, 사실·수치를 확인하며 디자인 방향과 수정안을 검토했습니다.</p><p class="small">재직 중 AI 업무 개선 사례와는 별도의 포트폴리오 제작 경험입니다.</p></details></section><section class="sec"><h2>기획자로서의 방향</h2><div class="txt"><p><strong class="reading-point">근거를 먼저 확인하고, 자동으로 처리할 것과 사람이 판단할 것을 나누는 기획자입니다.</strong></p><p>이제는 출시 이후의 사용 데이터를 보며 기획을 계속 고쳐 가고 싶습니다.</p></div><p class="links"><a href="resume.pdf">이력서 PDF 보기</a><a href="mailto:wag8574@gmail.com">wag8574@gmail.com</a></p></section><p class="next"><button type="button" data-go="home">다음: 홈으로</button></p></section></main><footer class="site-footer"><div><b>사용자의 다음 행동을 기획합니다.</b><p>조명호 · 서비스 기획 PM</p><p class="footer-note">화면·문서 자료는 보안을 위해 업체·인물·품목·수치를 가상 값으로 바꾼 재구성본입니다. 실제 기획 프로토타입 캡처는 '프로토타입 일부'로 표시했습니다.</p></div><div><a href="mailto:wag8574@gmail.com">이메일로 연락</a><a href="resume.pdf">이력서 PDF</a></div></footer><template id="full-edi"><img src="assets/evidence-179a51c387c0.png" alt="EDI 품목 화면 전체. 식별정보는 가상 값."></template><template id="full-sales"><img src="assets/evidence-b208e6830f75.png" alt="매출자료 통합 검증 화면 전체. 건수는 시연용 예시."></template><dialog id="dlg" aria-label="프로토타입 전체 화면"><div class="dlg-bar"><button type="button" id="dlg-size" aria-pressed="false">원본 크기</button><button type="button" id="dlg-close">닫기 ✕</button></div><div class="dlg-pan" data-large="false"><img id="dlg-img" alt=""></div><p class="small">원본 크기는 이미지가 화면보다 큰 경우에 사용할 수 있습니다.</p></dialog><script>(()=>{const openCase=id=>{const el=id&&document.getElementById(id);if(el)el.querySelectorAll(":scope > details.case-more").forEach(x=>{x.open=true})};const fromHash=()=>openCase(location.hash.slice(1));addEventListener("hashchange",()=>setTimeout(fromHash,0));addEventListener("DOMContentLoaded",fromHash);document.addEventListener("click",e=>{const a=e.target.closest("[data-go]");if(a)setTimeout(()=>openCase(a.dataset.go),60)});})();</script>
+</body></html>

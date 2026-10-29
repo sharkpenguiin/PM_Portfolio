@@ -1,0 +1,10 @@
+/* Fonts for the rebuild draft: NanumSquareRound is chosen (2026-10-28), Pretendard is kept as the alternative.
+   Declaring a face does not download it; only the family selected through data-font on <html> is fetched. */
+@font-face { font-family: "NSR"; font-weight: 300; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundL.woff2) format("woff2"); }
+@font-face { font-family: "NSR"; font-weight: 400; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundR.woff2) format("woff2"); }
+@font-face { font-family: "NSR"; font-weight: 700; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundB.woff2) format("woff2"); }
+@font-face { font-family: "NSR"; font-weight: 800; font-display: swap; src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundEB.woff2) format("woff2"); }
+
+/* Each option sets the family and the weights it actually has. */
+[data-font="nsr"]     { --font: "NSR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; --w-strong: 800; --w-bold: 700; --w-body: 400; }
+[data-font="pretendard"] { --font: "Pretendard Variable", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; --w-strong: 800; --w-bold: 700; --w-body: 400; }
