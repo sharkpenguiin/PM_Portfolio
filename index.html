@@ -15,7 +15,22 @@
 <link rel="preconnect" href="https://hangeul.pstatic.net" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="r.css">
-<style>.feature{align-self:center;padding:24px;border:1px solid #bdc6da;border-radius:16px;background:#f6f8fc}.feature h2{font-size:clamp(22px,3vw,34px);line-height:1.35;margin:12px 0}.feature p{margin-bottom:12px}.picks-sec .picks{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:760px){.summary,.picks-sec .picks{display:grid;grid-template-columns:1fr}.feature{padding:18px}}</style></head>
+<style>
+.summary { background: var(--tint); padding: clamp(24px, 4vw, 42px); gap: clamp(24px, 5vw, 64px); }
+.summary .who { padding: 0; }
+.feature { border-inline-start: 1px solid #c9d5f2; padding-inline-start: clamp(24px, 4vw, 42px); color: var(--navy); }
+.feature .where { margin: 0 0 18px; font-size: 15px; font-weight: var(--w-bold); }
+.feature h2 { margin: 0 0 16px; font-size: clamp(23px, 2.5vw, 30px); line-height: 1.4; word-break: keep-all; }
+.feature p { color: var(--ink-2); }
+.feature footer { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
+.feature footer a { color: var(--navy); font-size: 15px; text-underline-offset: 3px; }
+.picks-sec .picks { grid-template-columns: repeat(2,minmax(0,1fr)); }
+@media(max-width:900px) {
+  .summary { grid-template-columns: 1fr; }
+  .feature { border-inline-start: 0; border-top: 1px solid #c9d5f2; padding: 22px 0 0; }
+}
+@media(max-width:760px) { .picks-sec .picks { grid-template-columns: 1fr; } }
+</style></head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 <div class="page">
@@ -30,7 +45,7 @@
 
   <main id="main">
     <section class="summary" aria-labelledby="who"><div class="who"><p class="role">서비스 기획 PM</p><h1 id="who">조명호</h1><p class="intro">제약 유통 ERP의 요구 정의부터 개발 전달까지 단독으로 기획했습니다. 공공 결산 시스템에서는 담당자가 입력 중 오류를 확인하도록 개선했고, 사내에서는 PM 4명이 사용한 AI 문서 도구를 만들었습니다.</p><p class="tenure"><b>PM 2년 3개월</b> · 총 경력 2년 7개월</p></div>
-<article class="feature"><p class="where">웰던프로덕트 · 제약 유통 ERP</p><h2><a href="sales.html">같은 제품코드 오류를 업체마다 다시 확인해야 할까?</a></h2><p>여러 업체 자료에 흩어진 오류를 모아 한 번에 검토하는 방식을 설계하고 고객사와 합의했습니다.</p><span class="tag planned">고객사 합의</span></article></section>
+<article class="feature"><p class="where">웰던프로덕트 · 제약 유통 ERP</p><h2>같은 제품코드 오류를 업체마다 다시 확인해야 할까?</h2><p>여러 업체 자료에 흩어진 오류를 모아 한 번에 검토하는 방식을 설계하고 고객사와 합의했습니다.</p><footer><span class="tag planned">고객사 합의</span><a href="sales.html">검증 흐름 자세히 보기 →</a></footer></article></section>
 <section class="picks-sec" aria-labelledby="picks"><h2 id="picks">개발 순서를 정하고, 반영 결과를 확인한 경험</h2><ul class="picks"><li><p class="where">웰던프로덕트 · 제약 유통 ERP</p><h3><a href="order.html">마스터데이터 관리보다 정산 기능을 먼저 개발하도록 순서 조정</a></h3><p>실무자와 정산 자료의 분류 방식을 확인해 구축 순서를 조정했고, 재직 중 정산 기능 개발이 시작됐습니다.</p><span class="tag building">개발 진행</span></li><li><p class="where">한국정보기술단 · 기재부 결산시스템</p><h3><a href="finance.html">저장·계산 뒤에야 알던 결산 오류를 입력 중에 확인하도록 개선</a></h3><p>담당자와 진행한 사용자 테스트에서 문제를 발견하고, 개발팀이 반영한 뒤 동작을 다시 확인했습니다.</p><span class="tag applied">개발 반영·재검증</span></li></ul></section>
 <section aria-labelledby="work">
           <h2 id="work">경력</h2>
