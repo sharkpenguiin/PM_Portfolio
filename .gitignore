@@ -1,2 +1,2 @@
-# Draft workspace and working notes stay local; the public pages are built from it by drafts/publish.mjs
+# Local drafts and working notes are not deployed. The current site source is the root HTML/CSS/JS.
 drafts/

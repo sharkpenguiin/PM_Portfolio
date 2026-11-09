@@ -44,3 +44,6 @@ nav.case-nav {
   nav.case-nav { grid-template-columns: minmax(0, 1fr); padding: 28px 0 40px; }
   .case-nav .case-nav-next { grid-column: 1; }
 }
+
+/* Source workflow: responsive reading order, without active-step decoration. */
+.workflow-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0;list-style-position:inside;margin:22px 0}.workflow-steps li{padding:16px;background:#fff;border-radius:12px;font-size:15px}.workflow-evidence .note{margin-bottom:0}.prototype-evidence .ev-legend-n{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-section[id]{scroll-margin-top:24px}@media(max-width:700px){.workflow-steps{grid-template-columns:1fr}.prototype-evidence .ev-legend-n{grid-template-columns:1fr}}
