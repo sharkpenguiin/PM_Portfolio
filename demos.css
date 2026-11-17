@@ -1,0 +1,63 @@
+/* Hands-on re-creations for the three featured cases (2026-11-17).
+   They re-create the decision with fictional values, not the client's screens. */
+.demo{margin-top:28px;background:#f4f3fa;border-radius:8px;padding:22px;font-size:15px;color:#252b45}
+.demo-note{font-size:13px;color:#666b85;margin:12px 0 0}
+.seg{display:inline-flex;background:#fff;border-radius:9px;padding:4px;box-shadow:inset 0 0 0 1px #e2e0ec;flex-wrap:wrap;gap:2px}
+.seg button{font:inherit;font-size:14px;border:0;background:transparent;color:#4a5070;padding:9px 14px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#252b45;color:#fff;font-weight:700}
+.demo-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.count{font-size:14px;color:#4a5070}
+.count b{font-size:20px;color:#252b45;margin:0 2px}
+.d-btn{font:inherit;font-size:13.5px;font-weight:700;border:0;border-radius:7px;padding:8px 12px;cursor:pointer;background:#566ab8;color:#fff;white-space:nowrap}
+.d-btn.ghost{background:#fff;color:#252b45;box-shadow:inset 0 0 0 1.5px #e2e0ec}
+.d-btn:disabled{background:#e2e0ec;color:#666b85;cursor:default}
+.d-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.d-row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:6px;padding:12px 14px}
+.d-row .who{font-weight:700;min-width:58px}
+.d-row .what{color:#4a5070}
+.d-row.done{background:transparent;color:#666b85}
+.d-row.done .what{text-decoration:line-through;text-decoration-color:#8b90a6}
+.d-row .ok{font-size:13px;font-weight:700;color:#566ab8}
+.d-banner{background:#fff;border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:14px;box-shadow:inset 3px 0 0 #6f80c3}
+.d-summary{margin-top:14px;font-size:14.5px;color:#252b45;background:#fff;border-radius:6px;padding:12px 14px}
+.d-summary[hidden]{display:none}
+
+/* finance: form */
+.d-form{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;background:#fff;border-radius:6px;padding:16px}
+.d-field label{display:block;font-size:13px;color:#4a5070;margin-bottom:6px}
+.d-field input{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid #d9d7e6;border-radius:6px;color:#252b45;background:#fff}
+.d-field input[readonly]{background:#f6f5fb;color:#4a5070}
+.d-field input[aria-invalid="true"]{border-color:#b4505d}
+.d-err{font-size:13px;color:#b4505d;margin:6px 0 0;min-height:1.2em}
+.d-err .tag{display:inline-block;font-weight:700;margin-right:6px}
+.d-actions{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.d-msg{font-size:14px;color:#4a5070}
+.d-msg.bad{color:#b4505d}
+
+/* ai: source vs draft */
+.d-cols{display:grid;grid-template-columns:1fr 1.2fr;gap:14px}
+.d-col h3{font-size:14px;color:#4a5070;margin:0 0 8px;font-weight:700}
+.d-src li,.d-spec li{background:#fff;border-radius:6px;padding:11px 13px;font-size:14.5px;line-height:1.55}
+.d-src .id{font-weight:800;color:#566ab8;margin-right:6px}
+.d-spec li{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.ref{font-size:12.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:#eef0fa;color:#4c5fa8;white-space:nowrap}
+.ref.none{background:#fbecee;color:#b4505d}
+.d-spec li.gone{background:transparent;color:#666b85;text-decoration:line-through;text-decoration-color:#8b90a6}
+.criteria{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.criteria li{font-size:13px;padding:6px 10px;border-radius:6px;background:#fff;color:#4a5070}
+.criteria li.fail{color:#b4505d;font-weight:700;box-shadow:inset 0 0 0 1.5px #b4505d}
+.criteria li.pass{color:#4c5fa8}
+
+@media (max-width:760px){
+  .demo{padding:16px}
+  .d-form{grid-template-columns:1fr}
+  .d-cols{grid-template-columns:1fr}
+  .d-row{grid-template-columns:1fr auto}
+  .d-row .who{grid-column:1/-1;min-width:0}
+}
+/* style.css sets .detail-section p to 18px; keep demo text at its own scale. */
+.detail-section .demo p{font-size:14.5px;line-height:1.6;margin:0}
+.detail-section .demo .count{font-size:14px}
+.detail-section .demo .d-err{font-size:13px;margin-top:6px}
+.detail-section .demo .d-summary{margin-top:14px}
+.detail-section .demo-note{font-size:13px;line-height:1.6;color:#666b85;margin:12px 0 0}
