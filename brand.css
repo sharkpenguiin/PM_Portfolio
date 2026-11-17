@@ -17,3 +17,7 @@ nav strong{font-weight:800;letter-spacing:-.02em}
 .down{color:#8b90a6;font-size:18px;line-height:1}
 .art .caption{color:#666b85}
 @media (max-width:760px){.art,.art.white{padding:18px}}
+
+/* The PDF link sits in the nav on wide screens only; phones get it from the home buttons and the about page. */
+nav a{white-space:nowrap}
+@media(max-width:860px){nav .nav-pdf{display:none}}

@@ -32,6 +32,7 @@
   var href=a.getAttribute('href');
   if(href.indexOf('mailto:')===0){gtag('event','email_click',{from_page:page,link_area:area(a)});return;}
   if(href.indexOf('resume.pdf')===0){gtag('event','resume_open',{from_page:page,link_area:area(a)});return;}
+  if(href.indexOf('portfolio.pdf')===0){gtag('event','portfolio_pdf_open',{from_page:page,link_area:area(a)});return;}
   if(/^https?:/.test(href)&&href.indexOf(location.origin)!==0)return; // 외부 링크는 GA 기본 측정에 맡긴다
   var target=href.split('/').pop().split('#')[0].split('?')[0].replace('.html','')||page;
   gtag('event','case_link_click',{from_page:page,to_page:target,link_area:area(a)});
